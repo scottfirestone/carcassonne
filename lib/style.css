@@ -1,5 +1,49 @@
-.game-canvas {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*.game-canvas {
   border: 1px solid;
   margin: auto;
   display: block;
+}*/
+
+.view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: brown;
+  background-image: url('images/red-wood.jpg');
+  background-size: cover;
+}
+
+.board {
+  position: absolute;
+  width: 1800px;
+  height: 800px;
+}
+
+.starting-tile {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 500px;
+  right: 500px;
+  background-color: white;
+  background-image: url('images/tiles/0tile00.jpg');
+  background-size: cover;
+  box-shadow: 3px 3px 6px 0 #000000;
+}
+
+.second-tile {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 600px;
+  right: 500px;
+  background-color: white;
+  background-image: url('images/tiles/0tile1.jpg');
+  background-size: cover;
+  box-shadow: 3px 3px 6px 0 #000000;
 }

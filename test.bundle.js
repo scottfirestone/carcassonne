@@ -83,8 +83,8 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/scottfirestone/Turing/4module/carcassonne/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/scottfirestone/Turing/4module/carcassonne/node_modules/mocha/mocha.css", function() {
-			var newContent = require("!!/Users/scottfirestone/Turing/4module/carcassonne/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/scottfirestone/Turing/4module/carcassonne/node_modules/mocha/mocha.css");
+		module.hot.accept("!!/Users/kimiko/Documents/Turing/4module/projects/carcassonne/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/kimiko/Documents/Turing/4module/projects/carcassonne/node_modules/mocha/mocha.css", function() {
+			var newContent = require("!!/Users/kimiko/Documents/Turing/4module/projects/carcassonne/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/kimiko/Documents/Turing/4module/projects/carcassonne/node_modules/mocha/mocha.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
