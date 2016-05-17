@@ -46,17 +46,10 @@
 
 	'use strict';
 
-	$(document).ready(function () {
-
-	  $('.starting-tile').draggable({ grid: [100, 100] });
-
-	  $('.second-tile').draggable({ grid: [100, 100] });
-
-	  $('.rotate-tile').on('click', rotateTile);
-	});
+	$(document).ready(function () {});
 
 	function rotateTile() {
-	  var tile = $(this).parents('.second-tile');
+	  var tile = $(this).parents('.current-tile');
 	  if (tile.hasClass('rotate90')) {
 	    tile.removeClass('rotate90');
 	    tile.addClass('rotate180');
@@ -71,19 +64,19 @@
 	  console.log('tile', tile);
 	}
 
-	//
-	// function pullRandomTile() {
-	//   var tile = new Image();
-	//   tile.src = "/tiles/0tile" + (Math.floor(Math.random() * 24) + 1) + ".jpg";
-	//   renderNewTile(tile);
-	// }
-	//
-	// function renderNewTile(tile) {
-	//   tile.onload = function() {
-	//     context.drawImage(tile, 450, 0);
-	//   }
-	// }
-	// pullRandomTile();
+	function pullRandomTile() {
+	  var tile = new Image();
+	  tile.src = "/tiles/0tile" + (Math.floor(Math.random() * 24) + 1) + ".jpg";
+	  tile['class'] = 'current-tile';
+	  renderNewTile(tile);
+	}
+
+	function renderNewTile(tile) {
+	  $('#new-tile-box').append(tile);
+	  $('.current-tile').draggable({ grid: [100, 100] });
+	  $('.rotate-tile').on('click', rotateTile);
+	}
+	pullRandomTile();
 
 /***/ }
 /******/ ]);
