@@ -18,29 +18,53 @@ body {
   height: 800px;
 }
 
-.starting-tile {
+.confirm-tile {
+  position: absolute;
+  background-color: white;
+  top: 30px;
+  left: 30px;
+}
+/* tiles */
+
+#starting-tile {
+  top: 300px;
+  left: 500px;
+  background-image: url('images/tiles/0tile00.jpg');
+}
+
+.current-tile {
+  top: 0;
+  right: 0;
+}
+
+#new-tile-box {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 300px;
-  left: 500px;
+  border: 1px solid black;
+  top: 100px;
+  left: 100px;
+}
+
+.tile {
+  position: absolute;
+  width: 100px;
+  height: 100px;
   background-color: white;
-  background-image: url('images/tiles/0tile00.jpg');
   background-size: cover;
   box-shadow: 3px 3px 6px 0 #000000;
 }
 
-.second-tile {
+img .tile {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 400px;
-  left: 500px;
   background-color: white;
-  background-image: url('images/tiles/0tile1.jpg');
   background-size: cover;
   box-shadow: 3px 3px 6px 0 #000000;
 }
+
+/* rotations */
 
 .rotate-tile {
   position: absolute;
