@@ -42,11 +42,27 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	$(document).ready(function () {});
+	var Tile = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./tile\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	$(document).ready(function () {
+	  $('.confirm-tile').on('click', placeTile);
+	});
+
+	var starterTile = new Tile('images/tiles/0tile00.jpg', "D", false, 500, 300);
+
+	function placeTile() {
+	  var tile = $(document).find('.current-tile');
+	  tile.unbind('mouseenter mouseleave');
+	  tile.removeClass('current-tile');
+	  tile.draggable('disable');
+	  tile.css('border', 'none');
+	  $('.rotate-tile').remove();
+	  pullRandomTile();
+	}
 
 	function rotateTile() {
 	  var tile = $(this).parents('.current-tile');
@@ -61,21 +77,27 @@
 	  } else {
 	    tile.addClass('rotate90');
 	  }
-	  console.log('tile', tile);
 	}
 
 	function pullRandomTile() {
-	  var tile = new Image();
-	  tile.src = "/tiles/0tile" + (Math.floor(Math.random() * 24) + 1) + ".jpg";
-	  tile['class'] = 'current-tile';
-	  renderNewTile(tile);
+	  var tileImage = "lib/images/tiles/" + (Math.floor(Math.random() * 24) + 1) + ".png";
+	  renderTile(tileImage);
 	}
 
-	function renderNewTile(tile) {
-	  $('#new-tile-box').append(tile);
-	  $('.current-tile').draggable({ grid: [100, 100] });
+	function renderTile(tileImage) {
+	  var $tileDiv = $("<div class='tile current-tile'><div class='rotate-tile'></div></div>");
+	  var $placeHolder = $(document.getElementById('new-tile-box'));
+	  $placeHolder.append($tileDiv);
+	  $tileDiv.css('background-image', "url('" + tileImage + "')");
+	  $tileDiv.draggable({ grid: [100, 100] });
 	  $('.rotate-tile').on('click', rotateTile);
+	  $('.current-tile').hover(function () {
+	    $('.rotate-tile').show();
+	  }, function () {
+	    $('.rotate-tile').hide();
+	  });
 	}
+
 	pullRandomTile();
 
 /***/ }
