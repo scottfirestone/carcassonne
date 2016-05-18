@@ -29,7 +29,7 @@ body {
 #starting-tile {
   top: 300px;
   left: 500px;
-  background-image: url('images/tiles/0tile00.jpg');
+  background-image: url('images/tiles/20.png');
 }
 
 .current-tile {
@@ -52,16 +52,6 @@ body {
   height: 100px;
   background-color: white;
   background-size: cover;
-  box-shadow: 3px 3px 6px 0 #000000;
-}
-
-img .tile {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  background-size: cover;
-  box-shadow: 3px 3px 6px 0 #000000;
 }
 
 /* rotations */
