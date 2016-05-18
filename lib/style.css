@@ -24,11 +24,12 @@ body {
   top: 30px;
   left: 30px;
 }
+
 /* tiles */
 
 #starting-tile {
-  top: 300px;
-  left: 500px;
+  top: 301px;
+  left: 497px;
   background-image: url('images/tiles/20.png');
 }
 
