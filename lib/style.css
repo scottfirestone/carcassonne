@@ -1,4 +1,5 @@
 body {
+  position: relative;
   margin: 0;
   padding: 0;
 }
@@ -7,23 +8,24 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: brown;
-  background-image: url('images/red-wood.jpg');
-  background-size: cover;
+  overflow: auto;
 }
 
 .board {
   position: absolute;
-  width: 1800px;
-  height: 800px;
+  width: 3000px;
+  height: 3000px;
+  background-image: url('images/wood.jpg');
+  background-color: brown;
 }
 
-.confirm-tile {
+#btn-place-tile {
   position: absolute;
   background-color: white;
   top: 30px;
   left: 30px;
 }
+
 /* tiles */
 
 #starting-tile {
