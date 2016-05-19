@@ -1,0 +1,91 @@
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.view {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+.board {
+  position: absolute;
+  width: 3000px;
+  height: 3000px;
+  background-image: url('images/wood.jpg');
+  background-color: brown;
+}
+
+#btn-place-tile {
+  position: absolute;
+  background-color: white;
+  top: 70px;
+  left: 85px;
+}
+
+#tiles-remaining {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  top: 25px;
+  left: 50px;
+  height: 30px;
+}
+
+/* tiles */
+
+.current-tile {
+  top: 0;
+  right: 0;
+  border: 2px solid white;
+  z-index: 1000;
+}
+
+.tile {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  background-size: cover;
+}
+
+/* rotations */
+
+.rotate-tile {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  right: 0;
+  background-image: url('images/rotate.png');
+  background-size: cover;
+  opacity: 0.4;
+  display: none;
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.rotate270 {
+  transform: rotate(270deg);
+}
+
+.rotate90>.rotate-tile{
+  transform: rotate(-90deg);
+}
+
+.rotate180>.rotate-tile{
+  transform: rotate(-180deg);
+}
+
+.rotate270>.rotate-tile{
+  transform: rotate(-270deg);
+}
