@@ -22,8 +22,17 @@ body {
 #btn-place-tile {
   position: absolute;
   background-color: white;
-  top: 30px;
-  left: 30px;
+  top: 70px;
+  left: 85px;
+}
+
+#tiles-remaining {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  top: 25px;
+  left: 50px;
+  height: 30px;
 }
 
 /* tiles */
