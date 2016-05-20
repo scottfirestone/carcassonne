@@ -25,7 +25,7 @@ body {
   position: absolute;
   background-color: white;
   top: 70px;
-  left: 20px;
+  left: 85px;
   z-index: 10;
 }
 
@@ -33,16 +33,18 @@ body {
   position: absolute;
   background-color: white;
   top: 70px;
-  left: 120px;
+  left: 75px;
   z-index: 10;
+  display: none;
 }
 
 #btn-skip-meeple {
   position: absolute;
   background-color: white;
   top: 70px;
-  left: 220px;
+  left: 170px;
   z-index: 10;
+  display: none;
 }
 
 #tiles-remaining {
