@@ -138,3 +138,28 @@ body {
   height: 150px;
   padding-left: 20px;
 }
+
+.player-name {
+  margin-bottom: 5px
+}
+
+.player-score {
+  display: inline-block;
+}
+
+.player-score-value {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.score-buttons {
+  display: inline-block;
+}
+
+.add-to-score {
+  display: block;
+}
+
+.subtract-from-score {
+  display: block;
+}
