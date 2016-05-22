@@ -1,7 +1,25 @@
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Marck+Script);
+@import url(https://fonts.googleapis.com/css?family=Courgette);
+@import url(https://fonts.googleapis.com/css?family=MedievalSharp);
+@import url(https://fonts.googleapis.com/css?family=UnifrakturMaguntia);
+
+$medieval-font: 'UnifrakturMaguntia', cursive;
+$main-font: 'Marck Script', cursive;
+$secondary-font: 'MedievalSharp', cursive;
+
+/* Colors */
+$red: rgb(202,8,19);
+$blue: rgb(28,71,127);
+
 body {
   position: relative;
   margin: 0;
   padding: 0;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 .view {
@@ -50,6 +68,7 @@ body {
 #tiles-remaining {
   position: absolute;
   color: white;
+  font-family: $medieval-font;
   font-size: 30px;
   top: 20px;
   left: 50px;
@@ -62,8 +81,16 @@ body {
 .current-tile {
   top: 0;
   right: 0;
-  border: 3px solid white;
+  border: 3px solid;
   z-index: 1;
+}
+
+.red-border {
+  border-color: $red;
+}
+
+.blue-border {
+  border-color: $blue;
 }
 
 .tile {
@@ -80,6 +107,7 @@ body {
   width: 25px;
   height: 25px;
   background-size: cover;
+  z-index: 2;
 }
 
 /* rotations */
@@ -127,6 +155,7 @@ body {
   z-index: 10;
   top: 250px;
   left: 50px;
+  font-family: $secondary-font;
 }
 
 .player-pane {
@@ -137,6 +166,18 @@ body {
   width: 175px;
   height: 175px;
   padding-left: 20px;
+}
+
+.dim {
+  opacity: 0.5;
+}
+
+.red-background {
+  background-color: $red;
+}
+
+.blue-background {
+  background-color: $blue;
 }
 
 .player-name {
