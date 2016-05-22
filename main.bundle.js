@@ -44,64 +44,16 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	__webpack_require__(1);
 
-	var Tile = __webpack_require__(5);
-	var tileInventory = __webpack_require__(6);
+	var Game = __webpack_require__(8);
 
 	$(document).ready(function () {
-	  $('#btn-place-tile').on('click', placeTile);
+	  var game = new Game();
+	  game.start();
 	});
-
-	var starterTile = new Tile('images/tiles/D.png', "D", false, 500, 300);
-
-	function placeTile() {
-	  var tile = $(document).find('.current-tile');
-	  tile.unbind('mouseenter mouseleave');
-	  tile.removeClass('current-tile');
-	  tile.draggable('disable');
-	  tile.css('border', 'none');
-	  $('.rotate-tile').remove();
-	  pullRandomTile();
-	}
-
-	function rotateTile() {
-	  var tile = $(this).parents('.current-tile');
-	  if (tile.hasClass('rotate90')) {
-	    tile.removeClass('rotate90');
-	    tile.addClass('rotate180');
-	  } else if (tile.hasClass('rotate180')) {
-	    tile.removeClass('rotate180');
-	    tile.addClass('rotate270');
-	  } else if (tile.hasClass('rotate270')) {
-	    tile.removeClass('rotate270');
-	  } else {
-	    tile.addClass('rotate90');
-	  }
-	}
-
-	function pullRandomTile() {
-	  var newTile = tileInventory.pop();
-	  renderTile(newTile);
-	}
-
-	function renderTile(newTile) {
-	  var $tileDiv = $("<div class='tile current-tile'><div class='rotate-tile'></div></div>");
-	  var $placeHolder = $(document.getElementById('new-tile-box'));
-	  $placeHolder.append($tileDiv);
-	  $tileDiv.css('background-image', "url('lib/" + newTile.image + ".png')");
-	  $tileDiv.draggable({ grid: [100, 100] });
-	  $('.rotate-tile').on('click', rotateTile);
-	  $('.current-tile').hover(function () {
-	    $('.rotate-tile').show();
-	  }, function () {
-	    $('.rotate-tile').hide();
-	  });
-	}
-
-	pullRandomTile();
 
 /***/ },
 /* 1 */
@@ -113,7 +65,7 @@
 	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(7)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -138,7 +90,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\n.view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n.board {\n  position: absolute;\n  width: 3000px;\n  height: 3000px;\n  background-image: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./images/wood.jpg\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ");\n  background-color: brown; }\n\n#btn-place-tile {\n  position: absolute;\n  background-color: white;\n  top: 30px;\n  left: 30px; }\n\n/* tiles */\n#starting-tile {\n  top: 300px;\n  left: 500px;\n  background-image: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./images/tiles/D.png\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + "); }\n\n.current-tile {\n  top: 0;\n  right: 0;\n  border: 2px solid white; }\n\n#new-tile-box {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  border: 1px solid black;\n  top: 100px;\n  left: 100px; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./images/rotate.png\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n", ""]);
+	exports.push([module.id, "body {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\n.view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n.board {\n  position: absolute;\n  width: 3000px;\n  height: 3000px;\n  background-image: url(" + __webpack_require__(4) + ");\n  background-color: brown; }\n\n/* Buttons */\n#btn-place-tile {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 85px;\n  z-index: 10; }\n\n#btn-place-meeple {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 75px;\n  z-index: 10;\n  display: none; }\n\n#btn-skip-meeple {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 170px;\n  z-index: 10;\n  display: none; }\n\n#tiles-remaining {\n  position: absolute;\n  color: white;\n  font-size: 30px;\n  top: 20px;\n  left: 50px;\n  height: 30px;\n  z-index: 10; }\n\n/* tiles */\n.current-tile {\n  top: 0;\n  right: 0;\n  border: 3px solid white;\n  z-index: 1; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* meeples */\n.meeple {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(5) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n\n/* player-info */\n.player-info {\n  position: absolute;\n  z-index: 10;\n  top: 250px;\n  left: 50px; }\n\n.player-pane {\n  display: block;\n  border-style: solid;\n  border-width: 4px;\n  z-index: 10;\n  width: 175px;\n  height: 175px;\n  padding-left: 20px; }\n\n.player-name {\n  margin-bottom: 5px; }\n\n.player-score {\n  display: inline-block;\n  margin: 0; }\n\n.player-score-value {\n  display: inline-block;\n  padding-bottom: 10px;\n  margin-bottom: 5px;\n  vertical-align: top; }\n\n.score-buttons {\n  display: inline-block;\n  margin: 10px; }\n\n.add-to-score {\n  display: block;\n  height: 20px;\n  width: 20px;\n  background-image: url(" + __webpack_require__(6) + ");\n  background-position: 0 64px;\n  background-size: 42px 42px; }\n\n.subtract-from-score {\n  display: block;\n  height: 20px;\n  width: 20px;\n  background-image: url(" + __webpack_require__(6) + ");\n  background-position: 0 0;\n  background-size: 42px 42px; }\n\n.player-meeple-count {\n  margin: 0; }\n", ""]);
 
 	// exports
 
@@ -201,6 +153,24 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "f14b23bdf45761b97b9a629f338fcd4d.jpg";
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2fb6729ad0457769229d3184d6ec26b9.png";
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "718748aac53d2ebc00578d143be8af02.png";
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -425,137 +395,462 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	function Tile(image, type, top, right, bottom, left, pennant) {
-	  this.image = image;
-	  this.type = type;
-	  this.top = top;
-	  this.right = right;
-	  this.bottom = bottom;
-	  this.left = left;
-	  this.pennant = pennant;
-	}
-
-	module.exports = Tile;
-
-/***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(7);
-	var Tile = __webpack_require__(5);
-	var tileInventory = [];
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	function buildTileInventory() {
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/A', "a", "field", "field", "road", "field", false));
-	  });
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	  _.times(4, function () {
-	    tileInventory.push(new Tile('images/tiles/B', "b", "field", "field", "field", "field", false));
-	  });
+	var Tile = __webpack_require__(9);
+	var TileInventory = __webpack_require__(10);
+	var Grid = __webpack_require__(13);
+	var Player = __webpack_require__(14);
+	var Meeple = __webpack_require__(16);
 
-	  _.times(1, function () {
-	    tileInventory.push(new Tile('images/tiles/C', "c", "city", "city", "city", "city", true));
-	  });
+	var Game = (function () {
+	  function Game() {
+	    _classCallCheck(this, Game);
 
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/D', "d", "city", "road", "field", "road", false));
-	  });
+	    this.tileInventory = null;
+	    this.currentTile = null;
+	    this.player1 = null;
+	    this.player2 = null;
+	    this.currentPlayer = null;
+	    this.currentMeeple = null;
+	    this.setup();
+	  }
 
-	  _.times(5, function () {
-	    tileInventory.push(new Tile('images/tiles/E', "e", "city", "field", "field", "field", false));
-	  });
+	  _createClass(Game, [{
+	    key: 'setup',
+	    value: function setup() {
+	      $('#btn-place-tile').on('click', this.placeTile.bind(this));
+	      $('#btn-place-meeple').on('click', this.placeMeeple.bind(this));
+	      $('#btn-skip-meeple').on('click', this.skipMeeple.bind(this));
+	    }
+	  }, {
+	    key: 'start',
+	    value: function start() {
+	      this.tileInventory = new TileInventory();
+	      this.player1 = new Player("Kimi", "red");
+	      this.player2 = new Player("Scott", "blue");
+	      this.currentPlayer = this.player2;
+	      this.currentTile = this.tileInventory.nextTile();
+	      $('.board').append(this.currentTile.dom);
+	      this.currentTile.setPosition(500, 300);
+	      this.currentTile.show();
+	      this.nextTurn();
+	    }
+	  }, {
+	    key: 'updateTileCount',
+	    value: function updateTileCount() {
+	      var tilesLeft = this.tileInventory.tilesUnplayed.length;
+	      $('#tiles-remaining').html(tilesLeft + ' tiles remaining');
 
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/F', "f", "field", "city", "field", "city", true));
-	  });
+	      // change eventListener on placeTile button to end game
+	      if (tilesLeft === 0) {
+	        $('#btn-place-tile').off('click', this.placeTile);
+	        $('#btn-place-tile').on('click', this.endGame);
+	      }
+	    }
+	  }, {
+	    key: 'nextTurn',
+	    value: function nextTurn(e) {
+	      this.changeCurrentPlayer();
+	      this.currentTile = this.tileInventory.nextTile();
+	      this.currentTile.setPosition(100, 100);
+	      this.currentTile.activate();
+	      this.updateTileCount();
+	    }
+	  }, {
+	    key: 'changeCurrentPlayer',
+	    value: function changeCurrentPlayer() {
+	      if (this.currentPlayer === this.player1) {
+	        this.currentPlayer = this.player2;
+	      } else {
+	        this.currentPlayer = this.player1;
+	      }
+	    }
+	  }, {
+	    key: 'placeTile',
+	    value: function placeTile(e) {
+	      var position = this.currentTile.position;
+	      var isValid = this.tileInventory.isPositionOpen(position.x, position.y);
+	      if (isValid) {
+	        this.currentTile.setPosition(position.x, position.y);
+	        this.currentTile.deactivate();
+	        $('.board').append(this.currentTile.dom);
+	        if (this.currentPlayer.meepleInventory.meeplesUnplayed.length > 0) {
+	          this.showPlaceMeepleButtons();
+	          this.showMeeple();
+	        } else {
+	          this.nextTurn();
+	        }
+	      } else {
+	        alert("Pick a location that hasn't been taken!");
+	      }
+	    }
+	  }, {
+	    key: 'showPlaceTileButton',
+	    value: function showPlaceTileButton() {
+	      $('#btn-place-tile').show();
+	      $('#btn-place-meeple').hide();
+	      $('#btn-skip-meeple').hide();
+	    }
+	  }, {
+	    key: 'showPlaceMeepleButtons',
+	    value: function showPlaceMeepleButtons() {
+	      $('#btn-place-tile').hide();
+	      $('#btn-place-meeple').show();
+	      $('#btn-skip-meeple').show();
+	    }
+	  }, {
+	    key: 'showMeeple',
+	    value: function showMeeple() {
+	      var meeplesUnplayed = this.currentPlayer.meepleInventory.meeplesUnplayed;
+	      if (meeplesUnplayed.length > 0) {
+	        this.currentMeeple = meeplesUnplayed[0];
+	        this.currentMeeple.setPosition(100, 100);
+	        this.currentMeeple.activate();
+	      }
+	    }
+	  }, {
+	    key: 'placeMeeple',
+	    value: function placeMeeple(e) {
+	      var meeplesUnplayed = this.currentPlayer.meepleInventory.meeplesUnplayed;
+	      var meeplesPlayed = this.currentPlayer.meepleInventory.meeplesPlayed;
+	      var meeplePosition = this.currentMeeple.position;
+	      var currentTilePosition = this.currentTile.position;
+	      var inXRange = _.inRange(meeplePosition.x, currentTilePosition.x, currentTilePosition.x + 100);
+	      var inYRange = _.inRange(meeplePosition.y, currentTilePosition.y, currentTilePosition.y + 100);
 
-	  _.times(1, function () {
-	    tileInventory.push(new Tile('images/tiles/G', "g", "field", "city", "field", "city", false));
-	  });
+	      // meeple can only be placed on current tile
+	      if (inXRange && inYRange) {
+	        this.currentMeeple.setPosition(meeplePosition.x, meeplePosition.y);
+	        this.currentMeeple.dom.on('click', this.removeMeeple.bind(this));
+	        this.currentMeeple.deactivate();
+	        meeplesPlayed.push(meeplesUnplayed.shift());
+	        this.currentPlayer.playerInfo.updateMeepleCount();
+	        $('.board').append(this.currentMeeple.dom);
+	        this.showPlaceTileButton();
+	        this.nextTurn();
+	      } else {
+	        alert("Place Meeple on the current tile or push 'skip Meeple'");
+	      }
+	    }
+	  }, {
+	    key: 'skipMeeple',
+	    value: function skipMeeple(e) {
+	      this.currentMeeple.hide();
+	      this.showPlaceTileButton();
+	      this.nextTurn();
+	    }
+	  }, {
+	    key: 'removeMeeple',
+	    value: function removeMeeple(e) {
+	      var meeplesUnplayed = this.currentPlayer.meepleInventory.meeplesUnplayed;
+	      var meeplesPlayed = this.currentPlayer.meepleInventory.meeplesPlayed;
+	      var thisMeepleId = e.currentTarget.id.charAt(0);
+	      var $targetedMeeple = $.grep(meeplesPlayed, function (e) {
+	        return e.id == thisMeepleId;
+	      })[0];
+	      if (confirm('Remove Meeple?')) {
+	        $targetedMeeple.setPosition(0, 0);
+	        $targetedMeeple.dom.off('click');
+	        var index = meeplesPlayed.indexOf($targetedMeeple);
+	        meeplesUnplayed.push($targetedMeeple);
+	        meeplesPlayed.splice(index, 1);
+	        $targetedMeeple.hide();
+	      };
+	    }
+	  }, {
+	    key: 'endGame',
+	    value: function endGame(e) {
+	      alert("The game is over. Play again!");
+	    }
+	  }]);
 
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/H', "h", "city", "field", "city", "field", false));
-	  });
+	  return Game;
+	})();
 
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/I', "i", "city", "field", "field", "city", false));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/J', "j", "city", "road", "road", "field", false));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/K', "k", "city", "field", "road", "road", false));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/L', "l", "city", "road", "road", "road", false));
-	  });
-
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/M', "m", "city", "field", "field", "city", true));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/N', "n", "city", "field", "field", "city", false));
-	  });
-
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/O', "o", "city", "road", "road", "city", true));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/P', "p", "city", "road", "road", "city", false));
-	  });
-
-	  _.times(1, function () {
-	    tileInventory.push(new Tile('images/tiles/Q', "q", "city", "city", "field", "city", true));
-	  });
-
-	  _.times(3, function () {
-	    tileInventory.push(new Tile('images/tiles/R', "r", "city", "city", "field", "city", false));
-	  });
-
-	  _.times(2, function () {
-	    tileInventory.push(new Tile('images/tiles/S', "s", "city", "city", "road", "city", true));
-	  });
-
-	  _.times(1, function () {
-	    tileInventory.push(new Tile('images/tiles/T', "t", "city", "city", "road", "city", false));
-	  });
-
-	  _.times(8, function () {
-	    tileInventory.push(new Tile('images/tiles/U', "u", "road", "field", "road", "field", false));
-	  });
-
-	  _.times(9, function () {
-	    tileInventory.push(new Tile('images/tiles/V', "v", "field", "field", "road", "road", false));
-	  });
-
-	  _.times(4, function () {
-	    tileInventory.push(new Tile('images/tiles/W', "w", "field", "road", "road", "road", false));
-	  });
-
-	  _.times(1, function () {
-	    tileInventory.push(new Tile('images/tiles/X', "x", "road", "road", "road", "road", false));
-	  });
-	}
-
-	buildTileInventory();
-
-	module.exports = tileInventory;
+	module.exports = Game;
 
 /***/ },
-/* 7 */
+/* 9 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var Tile = (function () {
+	  function Tile(image, type, top, right, bottom, left, pennant, x, y) {
+	    _classCallCheck(this, Tile);
+
+	    this.config = {
+	      tileWidth: 100,
+	      tileHeight: 100
+	    };
+
+	    this.image = image;
+	    this.type = type;
+	    this.top = top;
+	    this.right = right;
+	    this.bottom = bottom;
+	    this.left = left;
+	    this.pennant = pennant || false;
+	    this.x = x || 0;
+	    this.y = y || 0;
+	    this.dom = null;
+	    this.domRotate = null;
+
+	    this.buildDom();
+	  }
+
+	  _createClass(Tile, [{
+	    key: 'buildDom',
+	    value: function buildDom() {
+	      this.dom = $('<div>', { 'class': 'tile' });
+	      this.dom.css('background-image', 'url(' + this.image + ')');
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	      this.dom.css('display', 'none');
+	      $('body').append(this.dom);
+	    }
+	  }, {
+	    key: 'setPosition',
+	    value: function setPosition(x, y) {
+	      this.x = x;
+	      this.y = y;
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	    }
+	  }, {
+	    key: 'show',
+	    value: function show() {
+	      this.dom.css('display', 'block');
+	    }
+	  }, {
+	    key: 'activate',
+	    value: function activate() {
+	      this.domRotate = $('<div>', { 'class': 'rotate-tile' });
+	      this.dom.addClass('current-tile');
+	      this.dom.append(this.domRotate);
+	      this.dom.css('display', 'block');
+
+	      // Add listeners
+	      this.dom.draggable({
+	        grid: [this.config.tileWidth, this.config.tileHeight]
+	      });
+
+	      this.dom.on('click', { tile: this }, this.tileClick);
+	      this.dom.on('mouseover', { tile: this }, this.tileMouseOver);
+	      this.dom.on('mouseout', { tile: this }, this.tileMouseOut);
+	    }
+	  }, {
+	    key: 'deactivate',
+	    value: function deactivate() {
+	      // Cleanup listeners
+	      this.dom.off('click', this.tileClick);
+	      this.dom.off('mouseover', this.tileMouseOver);
+	      this.dom.off('mouseout', this.tileMouseOut);
+	      this.dom.draggable('disable');
+	      this.dom.removeClass('current-tile');
+	      this.domRotate.remove();
+	    }
+	  }, {
+	    key: 'tileClick',
+	    value: function tileClick(e) {
+	      var tileDom = e.data.tile.dom;
+	      if (tileDom.hasClass('rotate90')) {
+	        tileDom.removeClass('rotate90');
+	        tileDom.addClass('rotate180');
+	      } else if (tileDom.hasClass('rotate180')) {
+	        tileDom.removeClass('rotate180');
+	        tileDom.addClass('rotate270');
+	      } else if (tileDom.hasClass('rotate270')) {
+	        tileDom.removeClass('rotate270');
+	      } else {
+	        tileDom.addClass('rotate90');
+	      }
+	    }
+	  }, {
+	    key: 'tileMouseOver',
+	    value: function tileMouseOver(e, data) {
+	      var tile = e.data.tile;
+	      tile.domRotate.show();
+	    }
+	  }, {
+	    key: 'tileMouseOut',
+	    value: function tileMouseOut(e) {
+	      var tile = e.data.tile;
+	      tile.domRotate.hide();
+	    }
+	  }, {
+	    key: 'position',
+	    get: function get() {
+	      var position = this.dom.position();
+	      var x = this.dom.position().left;
+	      var y = this.dom.position().top;
+	      return { x: x, y: y };
+	    }
+	  }]);
+
+	  return Tile;
+	})();
+
+	module.exports = Tile;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _ = __webpack_require__(11);
+	var Tile = __webpack_require__(9);
+
+	var TileInventory = (function () {
+	  function TileInventory() {
+	    _classCallCheck(this, TileInventory);
+
+	    this.config = {
+	      borderTypes: ['field', 'road', 'city'],
+	      tileTypes: {
+	        A: { quantity: 2, borders: ['field', 'field', 'road', 'field'], pennant: false },
+	        B: { quantity: 4, borders: ['field', 'field', 'field', 'field'], pennant: false },
+	        C: { quantity: 1, borders: ['city', 'city', 'city', 'city'], pennant: true },
+	        D: { quantity: 3, borders: ['city', 'road', 'field', 'road'], pennant: false },
+	        E: { quantity: 5, borders: ['city', 'field', 'field', 'field'], pennant: false },
+	        F: { quantity: 2, borders: ['field', 'city', 'field', 'city'], pennant: true },
+	        G: { quantity: 1, borders: ['field', 'city', 'field', 'city'], pennant: false },
+	        H: { quantity: 3, borders: ['city', 'field', 'city', 'field'], pennant: false },
+	        I: { quantity: 2, borders: ['city', 'field', 'field', 'city'], pennant: false },
+	        J: { quantity: 3, borders: ['city', 'road', 'road', 'field'], pennant: false },
+	        K: { quantity: 3, borders: ['city', 'field', 'road', 'road'], pennant: false },
+	        L: { quantity: 3, borders: ['city', 'road', 'road', 'road'], pennant: false },
+	        M: { quantity: 2, borders: ['city', 'field', 'field', 'city'], pennant: true },
+	        N: { quantity: 3, borders: ['city', 'field', 'field', 'city'], pennant: false },
+	        O: { quantity: 2, borders: ['city', 'road', 'road', 'city'], pennant: true },
+	        P: { quantity: 3, borders: ['city', 'road', 'road', 'city'], pennant: false },
+	        Q: { quantity: 1, borders: ['city', 'city', 'field', 'city'], pennant: true },
+	        R: { quantity: 3, borders: ['city', 'city', 'field', 'city'], pennant: false },
+	        S: { quantity: 2, borders: ['city', 'city', 'road', 'city'], pennant: true },
+	        T: { quantity: 1, borders: ['city', 'city', 'road', 'city'], pennant: false },
+	        U: { quantity: 8, borders: ['road', 'field', 'road', 'field'], pennant: false },
+	        V: { quantity: 9, borders: ['field', 'field', 'road', 'road'], pennant: false },
+	        W: { quantity: 4, borders: ['field', 'road', 'road', 'road'], pennant: false },
+	        X: { quantity: 1, borders: ['road', 'road', 'road', 'road'], pennant: false }
+	      },
+	      tileStart: 'D'
+	    };
+
+	    this.tilesUnplayed = [];
+	    this.tilesPlayed = [];
+	    this.build();
+	  }
+
+	  _createClass(TileInventory, [{
+	    key: 'build',
+	    value: function build() {
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = Object.keys(this.config.tileTypes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var tileType = _step.value;
+
+	          var tileInfo = this.config.tileTypes[tileType];
+	          for (var i = 0; i < tileInfo.quantity; i++) {
+	            this.addTile(tileType, tileInfo);
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator['return']) {
+	            _iterator['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+
+	      this.tilesUnplayed = _.shuffle(this.tilesUnplayed);
+	      this.addTile(this.config.tileStart, this.config.tileTypes[this.config.tileStart]);
+	    }
+	  }, {
+	    key: 'addTile',
+	    value: function addTile(type, info) {
+	      var tile = new Tile('lib/images/tiles/' + type + '.png', type, info.borders[0], info.borders[1], info.borders[2], info.borders[3], info.pennant);
+	      this.tilesUnplayed.push(tile);
+	    }
+	  }, {
+	    key: 'nextTile',
+	    value: function nextTile() {
+	      var tile = this.tilesUnplayed.pop();
+	      this.tilesPlayed.push(tile);
+	      return tile;
+	    }
+	  }, {
+	    key: 'isPositionOpen',
+	    value: function isPositionOpen(x, y) {
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
+
+	      try {
+	        for (var _iterator2 = this.tilesPlayed[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var tile = _step2.value;
+
+	          if (tile.x === x && tile.y === y) {
+	            return false;
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion2 && _iterator2['return']) {
+	            _iterator2['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
+	          }
+	        }
+	      }
+
+	      return true;
+	    }
+	  }, {
+	    key: 'validPositions',
+	    value: function validPositions() {
+	      var validPositions = [];
+	    }
+	  }]);
+
+	  return TileInventory;
+	})();
+
+	module.exports = TileInventory;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -16801,10 +17096,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module), (function() { return this; }())))
 
 /***/ },
-/* 8 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -16818,6 +17113,291 @@
 		return module;
 	}
 
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Grid = function Grid() {
+	  _classCallCheck(this, Grid);
+	};
+
+	module.exports = Grid;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var MeepleInventory = __webpack_require__(15);
+	var PlayerInfo = __webpack_require__(17);
+
+	var Player = (function () {
+	  function Player(name, color) {
+	    _classCallCheck(this, Player);
+
+	    this.name = name;
+	    this.color = color;
+	    this.score = 0;
+	    this.meepleInventory = new MeepleInventory(this.color);
+	    this.playerInfo = new PlayerInfo(this);
+	  }
+
+	  _createClass(Player, [{
+	    key: 'addToScore',
+	    value: function addToScore() {
+	      this.score++;
+	      this.playerInfo.updateScore();
+	    }
+	  }, {
+	    key: 'subtractFromScore',
+	    value: function subtractFromScore() {
+	      if (this.score > 0) {
+	        this.score--;
+	      }
+	      this.playerInfo.updateScore();
+	    }
+	  }]);
+
+	  return Player;
+	})();
+
+	module.exports = Player;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var Meeple = __webpack_require__(16);
+
+	var MeepleInventory = (function () {
+	  function MeepleInventory(color) {
+	    _classCallCheck(this, MeepleInventory);
+
+	    this.color = color;
+	    this.meeplesUnplayed = [];
+	    this.meeplesPlayed = [];
+	    this.build();
+	  }
+
+	  _createClass(MeepleInventory, [{
+	    key: 'build',
+	    value: function build() {
+	      for (var i = 1; i <= 7; i++) {
+	        var meeple = new Meeple(this.color, i);
+	        this.meeplesUnplayed.push(meeple);
+	      }
+
+	      // _.times(7, () => {
+	      //   let meeple = new Meeple(this.color);
+	      //   this.meeplesUnplayed.push(meeple);
+	      // });
+	      //
+	      // _.times(7, function() {
+	      //   let meeple = new Meeple(this.color);
+	      //   this.meeplesUnplayed.push(meeple);
+	      // }.bind(this));
+	    }
+	  }]);
+
+	  return MeepleInventory;
+	})();
+
+	module.exports = MeepleInventory;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var Meeple = (function () {
+	  function Meeple(color, id, x, y) {
+	    _classCallCheck(this, Meeple);
+
+	    this.color = color;
+	    this.id = id;
+	    this.x = x || 0;
+	    this.y = y || 0;
+	    this.dom = null;
+
+	    this.buildDom();
+	  }
+
+	  _createClass(Meeple, [{
+	    key: 'buildDom',
+	    value: function buildDom() {
+	      this.dom = $('<div>', { 'class': 'meeple' });
+	      this.dom.css('background-image', 'url(\'lib/images/meeples/meeple-' + this.color + '.png\')');
+	      this.dom.attr('id', this.id + '-meeple');
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	      this.dom.css('display', 'none');
+	      this.dom.css('position', 'absolute');
+	      this.dom.draggable();
+	      $('body').append(this.dom);
+	    }
+	  }, {
+	    key: 'setPosition',
+	    value: function setPosition(x, y) {
+	      this.x = x;
+	      this.y = y;
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	    }
+	  }, {
+	    key: 'hide',
+	    value: function hide() {
+	      this.dom.css('display', 'none');
+	    }
+	  }, {
+	    key: 'activate',
+	    value: function activate() {
+	      // this.dom.addClass('current-meeple');
+	      this.dom.css('display', 'block');
+	      this.dom.draggable('enable');
+	    }
+	  }, {
+	    key: 'deactivate',
+	    value: function deactivate() {
+	      this.dom.draggable('disable');
+	      // this.dom.removeClass('current-meeple');
+	    }
+	  }, {
+	    key: 'position',
+	    get: function get() {
+	      var position = this.dom.position();
+	      var x = this.dom.position().left;
+	      var y = this.dom.position().top;
+	      return { x: x, y: y };
+	    }
+	  }]);
+
+	  return Meeple;
+	})();
+
+	module.exports = Meeple;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var PlayerInfo = (function () {
+	  function PlayerInfo(player) {
+	    _classCallCheck(this, PlayerInfo);
+
+	    this.player = player;
+	    this.name = player.name;
+	    this.score = player.score;
+	    this.remainingMeeples = this.player.meepleInventory.meeplesUnplayed.length;
+	    this.dom = null;
+
+	    this.buildDom();
+	    this.addEventListeners();
+	  }
+
+	  _createClass(PlayerInfo, [{
+	    key: 'buildDom',
+	    value: function buildDom() {
+	      this.dom = $('<div>', { 'class': 'player-pane' });
+	      this.dom.css('left', 100);
+	      this.dom.css('top', 300);
+	      this.dom.css('background-color', this.player.color);
+	      this.dom.css('color', "white");
+
+	      /* build player name */
+	      this.nameDom = $('<h1>', { 'class': 'player-name' });
+	      this.nameDom.append(this.player.name);
+	      this.dom.append(this.nameDom);
+
+	      /* build outer score div, score text, scoring buttons div */
+	      this.scoreDom = $('<div>', { 'class': 'player-score' });
+	      this.scoreValueDom = $('<h3>', { 'class': 'player-score-value' });
+	      this.scoreValueDom.append('Score: ' + this.score);
+	      this.scoreButtons = $('<div>', { 'class': 'score-buttons' });
+	      this.scoreDom.append(this.scoreValueDom);
+
+	      /* build '+' button */
+	      this.addToScoreDom = $('<div>', { 'class': 'add-to-score' });
+	      this.scoreButtons.append(this.addToScoreDom);
+
+	      /* build '-' button */
+	      this.subtractFromScoreDom = $('<div>', { 'class': 'subtract-from-score' });
+	      this.scoreButtons.append(this.subtractFromScoreDom);
+
+	      /* append '+' and '-' buttons to score buttons div */
+	      this.scoreDom.append(this.scoreButtons);
+
+	      /* append score buttons div to score div */
+	      this.dom.append(this.scoreDom);
+
+	      /* build meeple count */
+	      this.meepleCountDom = $('<h3>', { 'class': 'player-meeple-count' });
+	      this.meepleCountDom.append('Meeples: ' + this.remainingMeeples);
+	      this.dom.append(this.meepleCountDom);
+
+	      $('.player-info').append(this.dom);
+	    }
+	  }, {
+	    key: 'addEventListeners',
+	    value: function addEventListeners() {
+	      this.dom.find('.add-to-score').on('click', this.addToPlayerScore.bind(this.player));
+
+	      this.dom.find('.subtract-from-score').on('click', this.subtractFromPlayerScore.bind(this.player));
+	    }
+	  }, {
+	    key: 'addToPlayerScore',
+	    value: function addToPlayerScore(e) {
+	      this.addToScore();
+	    }
+	  }, {
+	    key: 'subtractFromPlayerScore',
+	    value: function subtractFromPlayerScore(e) {
+	      this.subtractFromScore();
+	    }
+	  }, {
+	    key: 'updateScore',
+	    value: function updateScore() {
+	      this.score = this.player.score;
+	      this.scoreValueDom.html('Score: ' + this.score);
+	    }
+	  }, {
+	    key: 'updateMeepleCount',
+	    value: function updateMeepleCount(count) {
+	      this.remainingMeeples = this.player.meepleInventory.meeplesUnplayed.length;
+	      this.meepleCountDom.html('Meeples: ' + this.remainingMeeples);
+	    }
+	  }]);
+
+	  return PlayerInfo;
+	})();
+
+	module.exports = PlayerInfo;
 
 /***/ }
 /******/ ]);
