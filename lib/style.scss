@@ -22,17 +22,17 @@ div {
   box-sizing: border-box;
 }
 
-.view {
+#view {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: auto;
 }
 
-.board {
+#board {
   position: absolute;
-  width: 3000px;
-  height: 3000px;
+  width: 100%;
+  height: 100%;
   background-image: url('images/wood.jpg');
   background-color: brown;
 }
