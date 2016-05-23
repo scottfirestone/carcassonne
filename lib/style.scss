@@ -232,3 +232,46 @@ div {
 	top:0;
 	border-radius: 10px;
 }
+
+/* background-music */
+
+#backgroundaudio {
+  position: absolute;
+  bottom: -43px;
+  left: 5px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#backgroundaudio:hover {
+  bottom: 0;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#backgroundaudio audio {
+  padding: 5px;
+  display: table-cell;
+  vertical-align: middle;
+  height: 43px;
+  z-index: 9998;
+}
+
+#backgroundaudio i {
+  background-image: url("images/sound.png");
+  background-size: cover;
+  font-size: 40px;
+  display: block;
+  padding: 5px;
+  height: 50px;
+  width: 50px;
+  float: none;
+  margin-bottom: -1px;
+  z-index: 9999;
+}
