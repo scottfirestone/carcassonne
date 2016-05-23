@@ -1,15 +1,30 @@
 const assert = require('chai').assert;
-const jsdom = require('jsdom');
 const Player = require('../lib/player');
-const window = jsdom.jsdom().defaultView;
 
 describe('Player', () => {
-
   it('returns an object', () => {
-    jsdom.jQueryify(window, "../js/vendor/jquery.min.js", () => {
+    let player = new Player('name', 'color');
+    assert.typeOf(player, 'object');
+  });
 
-      let player = new Player('name', 'color');
-      assert.typeOf(player, 'object');
+  describe('addToScore', function() {
+    it('increments the score', function() {
+      var player = new Player('name', 'color');
+      assert.equal(player.score, 0);
+      player.addToScore();
+      assert.equal(player.score, 1);
+    });
+  });
+
+  describe('subtractFromScore', function() {
+    it('decrements the score, does not go below zero', function() {
+      var player = new Player('name', 'color');
+      player.addToScore();
+      assert.equal(player.score, 1);
+      player.subtractFromScore();
+      assert.equal(player.score, 0);
+      player.subtractFromScore();
+      assert.equal(player.score, 0);
     });
   });
 });
