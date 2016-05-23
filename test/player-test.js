@@ -7,6 +7,16 @@ describe('Player', () => {
     assert.typeOf(player, 'object');
   });
 
+  it('has a name', () => {
+    let player = new Player('scott', 'color');
+    assert.equal(player.name, 'scott');
+  });
+
+  it('has a color', () => {
+    let player = new Player('name', 'blue');
+    assert.equal(player.color, 'blue');
+  });
+
   describe('addToScore', function() {
     it('increments the score', function() {
       var player = new Player('name', 'color');
