@@ -19,7 +19,7 @@ describe('Player', () => {
 
   describe('addToScore', function() {
     it('increments the score', function() {
-      var player = new Player('name', 'color');
+      let player = new Player('name', 'color');
       assert.equal(player.score, 0);
       player.addToScore();
       assert.equal(player.score, 1);
@@ -28,7 +28,7 @@ describe('Player', () => {
 
   describe('subtractFromScore', function() {
     it('decrements the score, does not go below zero', function() {
-      var player = new Player('name', 'color');
+      let player = new Player('name', 'color');
       player.addToScore();
       assert.equal(player.score, 1);
       player.subtractFromScore();
