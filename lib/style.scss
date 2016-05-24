@@ -31,8 +31,8 @@ div {
 
 .board {
   position: absolute;
-  width: 3000px;
-  height: 3000px;
+  width: 100%;
+  height: 100%;
   background-image: url('images/wood.jpg');
   background-color: brown;
 }
@@ -265,9 +265,39 @@ div {
 }
 
 /* pre-game */
+
 #pre-game {
-  position: absolute;
-  top: 70px;
-  left: 85px;
+  align: center;
+  height: 500px;
+  width: 700px;
   z-index: 10;
+  margin: auto;
+  padding: 20px;
+}
+
+#pre-game img {
+  display: block;
+  margin: auto;
+}
+
+#pre-game button {
+  display: block;
+  margin: 50px auto;
+  width: 200px;
+  height: 65px;
+  line-height: 65px;
+  border-radius: 5px;
+  background-color: $blue;
+  color: white;
+  font-family: $medieval-font;
+  font-size: 32px;
+}
+
+#pre-game input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  height: 25px;
+  font-family: $secondary-font;
+  font-size: 24px;
 }
