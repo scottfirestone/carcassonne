@@ -6,6 +6,15 @@ body {
   background-image: url('images/wood.jpg');
 }
 
+header {
+  width: 100vw;
+
+  img {
+    margin: 20px auto;
+    display: block;
+  }
+}
+
 section {
   display: none;
   position: relative;
@@ -54,45 +63,65 @@ section#section-player-input {
 }
 
 section#section-game {
-  button {
-    position: absolute;
-    display: none;
-  }
+  #game-aside {
 
-  #btn-place-tile {
-    top: 70px;
-    left: 85px;
-  }
+    button {
+      position: absolute;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: white;
+      color: #1c477f;
+      font-family: $secondary-font;
+      font-size: 18px;
+      display: none;
+    }
 
-  #btn-place-meeple {
-    top: 70px;
-    left: 75px;
-  }
+    #btn-place-tile {
+      top: 55px;
+      left: 50px;
+      width: 215px;
+    }
 
-  #btn-skip-meeple {
-    top: 70px;
-    left: 170px;
-  }
+    #btn-place-meeple {
+      top: 55px;
+      left: 35px;
+      width: 125px;
+    }
 
-  #tiles-remaining {
-    position: absolute;
-    color: white;
-    font-family: $medieval-font;
-    font-size: 30px;
-    top: 20px;
-    left: 50px;
-    height: 30px;
+    #btn-skip-meeple {
+      top: 55px;
+      left: 165px;
+      width: 115px;
+    }
+
+    #tiles-remaining {
+      position: absolute;
+      color: white;
+      font-family: $medieval-font;
+      font-size: 30px;
+      top: 20px;
+      left: 50px;
+      height: 30px;
+      width: 220px;
+    }
   }
 }
 
-.view {
+.meeple {
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  z-index: 2;
+}
+
+#view {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: auto;
 }
 
-.board {
+#board {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -121,16 +150,6 @@ section#section-game {
   height: 100px;
   background-color: white;
   background-size: cover;
-}
-
-/* meeples */
-
-.meeple {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background-size: cover;
-  z-index: 2;
 }
 
 /* rotations */
@@ -173,11 +192,11 @@ section#section-game {
 
 /* player-info */
 
-.player-info {
+#player-info {
   position: absolute;
   z-index: 10;
   top: 250px;
-  left: 50px;
+  left: 65px;
   font-family: $secondary-font;
 
   .red-background {
@@ -195,8 +214,8 @@ section#section-game {
     z-index: 10;
     width: 175px;
     height: 175px;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding-top: 25px;
+    padding-left: 25px;
 
     .player-name {
       margin-bottom: 5px
