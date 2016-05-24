@@ -1,25 +1,54 @@
-/* Fonts */
-@import url(https://fonts.googleapis.com/css?family=Marck+Script);
-@import url(https://fonts.googleapis.com/css?family=Courgette);
-@import url(https://fonts.googleapis.com/css?family=MedievalSharp);
-@import url(https://fonts.googleapis.com/css?family=UnifrakturMaguntia);
-
-$medieval-font: 'UnifrakturMaguntia', cursive;
-$main-font: 'Marck Script', cursive;
-$secondary-font: 'MedievalSharp', cursive;
-
-/* Colors */
-$red: rgb(202,8,19);
-$blue: rgb(28,71,127);
+@import "styles/fonts";
+@import "styles/variables";
+@import "styles/reset";
 
 body {
-  position: relative;
-  margin: 0;
-  padding: 0;
+  background-image: url('images/wood.jpg');
 }
 
-div {
-  box-sizing: border-box;
+section {
+  display: none;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+
+  .logo {
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    display: block;
+    margin: 50px auto;
+    width: 200px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 5px;
+    background-color: $blue;
+    color: white;
+    font-family: $medieval-font;
+    font-size: 32px;
+  }
+}
+
+section#section-pre-game {
+}
+
+section#section-player-input {
+  input {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    height: 45px;
+    font-family: $secondary-font;
+    font-size: 24px;
+  }
+}
+
+#backgroundaudio {
+  display: none;
 }
 
 .view {
@@ -262,42 +291,4 @@ div {
   float: none;
   margin-bottom: -1px;
   z-index: 9999;
-}
-
-/* pre-game */
-
-#pre-game {
-  align: center;
-  height: 500px;
-  width: 700px;
-  z-index: 10;
-  margin: auto;
-  padding: 20px;
-}
-
-#pre-game img {
-  display: block;
-  margin: auto;
-}
-
-#pre-game button {
-  display: block;
-  margin: 50px auto;
-  width: 200px;
-  height: 65px;
-  line-height: 65px;
-  border-radius: 5px;
-  background-color: $blue;
-  color: white;
-  font-family: $medieval-font;
-  font-size: 32px;
-}
-
-#pre-game input {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  height: 25px;
-  font-family: $secondary-font;
-  font-size: 24px;
 }
