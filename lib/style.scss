@@ -85,10 +85,6 @@ section#section-game {
   }
 }
 
-#backgroundaudio {
-  display: none;
-}
-
 .view {
   position: relative;
   width: 100vw;
@@ -107,8 +103,6 @@ section#section-game {
 /* tiles */
 
 .current-tile {
-  top: 0;
-  right: 0;
   border: 3px solid;
   z-index: 1;
 }
@@ -130,6 +124,7 @@ section#section-game {
 }
 
 /* meeples */
+
 .meeple {
   position: absolute;
   width: 25px;
@@ -184,71 +179,72 @@ section#section-game {
   top: 250px;
   left: 50px;
   font-family: $secondary-font;
-}
 
-.player-pane {
-  display: block;
-  border-style: solid;
-  border-width: 4px;
-  z-index: 10;
-  width: 175px;
-  height: 175px;
-  padding-left: 20px;
+  .red-background {
+    background-color: $red;
+  }
+
+  .blue-background {
+    background-color: $blue;
+  }
+
+  .player-pane {
+    display: block;
+    border-style: solid;
+    border-width: 4px;
+    z-index: 10;
+    width: 175px;
+    height: 175px;
+    padding-top: 20px;
+    padding-left: 20px;
+
+    .player-name {
+      margin-bottom: 5px
+    }
+
+    .player-score {
+      display: inline-block;
+      margin: 0;
+
+      .player-score-value {
+        display: inline-block;
+        padding-top: 20px;
+        vertical-align: top;
+        width: 85px;
+      }
+
+      .score-buttons {
+        display: inline-block;
+        margin: 10px;
+
+        .add-to-score {
+          display: block;
+          height: 20px;
+          width: 20px;
+          background-image: url('images/buttons.png');
+          background-position: 0 64px;
+          background-size: 42px 42px;
+        }
+
+        .subtract-from-score {
+          display: block;
+          height: 20px;
+          width: 20px;
+          background-image: url('images/buttons.png');
+          background-position: 0 0;
+          background-size: 42px 42px;
+        }
+      }
+    }
+
+    .player-meeple-count {
+      margin: 0;
+    }
+  }
 }
 
 .dim {
   opacity: 0.5;
-}
-
-.red-background {
-  background-color: $red;
-}
-
-.blue-background {
-  background-color: $blue;
-}
-
-.player-name {
-  margin-bottom: 5px
-}
-
-.player-score {
-  display: inline-block;
-  margin: 0;
-}
-
-.player-score-value {
-  display: inline-block;
-  padding-bottom: 10px;
-  margin-bottom: 5px;
-  vertical-align: top;
-}
-
-.score-buttons {
-  display: inline-block;
-  margin: 10px;
-}
-
-.add-to-score {
-  display: block;
-  height: 20px;
-  width: 20px;
-  background-image: url('images/buttons.png');
-  background-position: 0 64px;
-  background-size: 42px 42px;
-}
-
-.subtract-from-score {
-  display: block;
-  height: 20px;
-  width: 20px;
-  background-image: url('images/buttons.png');
-  background-position: 0 0;
-  background-size: 42px 42px;
-}
-
-.player-meeple-count {
-  margin: 0;
 }
 
 /* background-music */
@@ -262,6 +258,27 @@ section#section-game {
   -ms-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
+
+  audio {
+    padding: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    height: 43px;
+    z-index: 9998;
+  }
+
+  i {
+    background-image: url("images/sound.png");
+    background-size: cover;
+    font-size: 40px;
+    display: block;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    float: none;
+    margin-bottom: -1px;
+    z-index: 9999;
+  }
 }
 
 #backgroundaudio:hover {
@@ -271,25 +288,4 @@ section#section-game {
   -ms-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
-}
-
-#backgroundaudio audio {
-  padding: 5px;
-  display: table-cell;
-  vertical-align: middle;
-  height: 43px;
-  z-index: 9998;
-}
-
-#backgroundaudio i {
-  background-image: url("images/sound.png");
-  background-size: cover;
-  font-size: 40px;
-  display: block;
-  padding: 5px;
-  height: 50px;
-  width: 50px;
-  float: none;
-  margin-bottom: -1px;
-  z-index: 9999;
 }
