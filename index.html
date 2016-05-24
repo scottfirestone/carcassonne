@@ -5,20 +5,32 @@
   <title>Carcassonne</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 </head>
 <body>
-  <div id="view">
-    <div id="board">
+  <header>
+    <img src="lib/images/carcassonne-logo.png" class="logo" alt="carcassonne-logo" />
+  </header>
+  <section id="section-pre-game">
+    <button id="btn-create-game" type="button" class="btn-primary">Create a New Game</button>
+  </section>
+  <section id="section-player-input">
+    <input id="input-player-name-1" type="text" placeholder="Enter Player 1 Name" />
+    <input id="input-player-name-2" type="text" placeholder="Enter Player 2 Name" />
+    <button id="btn-begin-game" type="button" class="btn-primary">Begin Game</button>
+  </section>
+  <section id="section-game">
+    <div id="view">
+      <div id="board"></div>
     </div>
-  </div>
-  <div class="player-info">
-  </div>
-  <button id="btn-place-tile" type="button">Confirm Tile Placement</button>
-  <button id="btn-place-meeple" type="button">Place Meeple</button>
-  <button id="btn-skip-meeple" type="button">Skip Meeple</button>
-  <div id="tiles-remaining"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/utils/Draggable.min.js"></script>
+    <aside id="game-aside">
+      <div id="player-info"></div>
+      <button id="btn-place-tile" type="button">Confirm Tile Placement</button>
+      <button id="btn-place-meeple" type="button">Place Meeple</button>
+      <button id="btn-skip-meeple" type="button">Skip Meeple</button>
+      <div id="tiles-remaining"></div>
+    </aside>
+  </section>
   <div id="backgroundaudio">
     <i></i>
     <audio src="lib/music/medieval-music.mp3" controls loop autoplay preload>
