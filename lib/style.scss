@@ -19,10 +19,10 @@ section {
     margin: auto;
   }
 
-  button {
+  .btn-primary {
     display: block;
     margin: 50px auto;
-    width: 200px;
+    padding: 0 20px;
     height: 65px;
     line-height: 65px;
     border-radius: 5px;
@@ -45,6 +45,44 @@ section#section-player-input {
     font-family: $secondary-font;
     font-size: 24px;
   }
+  input.error {
+    &::-webkit-input-placeholder { color: red; }
+    &::-moz-placeholder { color: red; }
+    &:-moz-placeholder { color: red; }
+    &::-ms-input-placeholder { color: red; }
+  }
+}
+
+section#section-game {
+  button {
+    position: absolute;
+    display: none;
+  }
+
+  #btn-place-tile {
+    top: 70px;
+    left: 85px;
+  }
+
+  #btn-place-meeple {
+    top: 70px;
+    left: 75px;
+  }
+
+  #btn-skip-meeple {
+    top: 70px;
+    left: 170px;
+  }
+
+  #tiles-remaining {
+    position: absolute;
+    color: white;
+    font-family: $medieval-font;
+    font-size: 30px;
+    top: 20px;
+    left: 50px;
+    height: 30px;
+  }
 }
 
 #backgroundaudio {
@@ -64,43 +102,6 @@ section#section-player-input {
   height: 100%;
   background-image: url('images/wood.jpg');
   background-color: brown;
-}
-
-/* Buttons */
-
-#btn-place-tile {
-  position: absolute;
-  top: 70px;
-  left: 85px;
-  z-index: 10;
-  display: none;
-}
-
-#btn-place-meeple {
-  position: absolute;
-  top: 70px;
-  left: 75px;
-  z-index: 10;
-  display: none;
-}
-
-#btn-skip-meeple {
-  position: absolute;
-  top: 70px;
-  left: 170px;
-  z-index: 10;
-  display: none;
-}
-
-#tiles-remaining {
-  position: absolute;
-  color: white;
-  font-family: $medieval-font;
-  font-size: 30px;
-  top: 20px;
-  left: 50px;
-  height: 30px;
-  z-index: 10;
 }
 
 /* tiles */
