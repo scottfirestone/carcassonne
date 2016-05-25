@@ -51,20 +51,34 @@ section#section-pre-game {
 
 section#section-player-input {
   padding-top: 180px;
+  font-family: $secondary-font;
+  font-size: 24px;
 
-  input {
+  label {
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    width: 420px;
+    color: white;
+  }
+
+  select, input {
     display: block;
     margin: 20px auto;
     padding: 10px;
     height: 45px;
+    width: 250px;
     font-family: $secondary-font;
     font-size: 24px;
   }
-  input.error {
-    &::-webkit-input-placeholder { color: red; }
-    &::-moz-placeholder { color: red; }
-    &:-moz-placeholder { color: red; }
-    &::-ms-input-placeholder { color: red; }
+
+  select {
+    width: 100px;
+  }
+
+  input {
+    display: none;
   }
 }
 
