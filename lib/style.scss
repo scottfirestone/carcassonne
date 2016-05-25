@@ -80,14 +80,16 @@ section#section-game {
       color: #1c477f;
       font-family: $secondary-font;
       font-size: 18px;
-      opacity: 0;
-      visibility: hidden;
+      display: none;
     }
 
     #btn-place-tile {
       top: 55px;
       left: 50px;
       width: 215px;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
     }
 
     #btn-place-meeple {
