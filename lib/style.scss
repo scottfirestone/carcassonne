@@ -266,6 +266,16 @@ section#section-game {
   opacity: 0.5;
 }
 
+.box {
+	background-color: #91e600;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	position: absolute;
+	top:0;
+	border-radius: 10px;
+}
+
 /* background-music */
 
 #backgroundaudio {
