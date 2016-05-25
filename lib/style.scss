@@ -354,15 +354,15 @@ section#section-game {
     cursor: pointer;
   }
 
-  img {
+  .logo {
     display: block;
-    position: absolute;
-    top: 75px;
+    position: relative;
+    right: 35px;
   }
 
   .main-content {
     font-family: $rules-font;
-    padding-top: 25%;
+    padding-top: 5%;
 
     h2, h3 {
       font-family: $medieval-font;
@@ -398,6 +398,61 @@ section#section-game {
       #invalid-tile-placement {
         width: 50%;
       }
+
+      #connecting-road {
+        width: 80%;
+      }
+    }
+
+    #rules-followers img {
+      display: block;
+      position: relative;
+      top: 10px;
+      width: 100%;
+    }
+
+    #road-scoring-1 {
+      display: inline-block;
+      position: relative;
+      top: -100px;
+      width: 150px;
+      left: 10%;
+    }
+
+    #road-scoring-2 {
+      display: inline-block;
+      position: relative;
+      top: 10px;
+      left: 30%;
+      width: 90px;
+    }
+
+    #tie-city {
+      display: inline-block;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #cloister-scoring {
+      display: inline-block;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-1 {
+      display: inline-block;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-2 {
+      display: inline-block;
+      left: 25%;
+      top: 18px;
+      width: 55%;
     }
   }
 }
