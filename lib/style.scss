@@ -327,14 +327,14 @@ section#section-game {
   top: 10%;
   left: 10%;
   overflow: auto;
-  background-color: white;
+  background-color: $blue;
 
   #modal-rules-content {
-    background-color: #fefefe;
+    background-color: #F8ECC2;
+    // background-color: #fefefe;
     margin: 5% auto;
-    height: 90%;
     width: 80%;
-    padding: 20px;
+    padding: 60px;
     border: 2px solid #888;
   }
 
@@ -352,5 +352,42 @@ section#section-game {
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  img {
+    display: block;
+    position: absolute;
+    top: 75px;
+  }
+
+  .main-content {
+    font-family: $rules-font;
+    padding-top: 25%;
+
+    h2, h3 {
+      font-family: $medieval-font;
+      padding-top: 20px;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+    .two-thirds-left {
+      display: inline-block;
+      margin: 0;
+      width: 60%;
+    }
+
+    .one-third-right {
+      display: inline-block;
+      width: 30%;
+
+      img {
+        background-size: cover;
+        display: inline-block;
+        z-index: 21;
+      }
+    }
   }
 }
