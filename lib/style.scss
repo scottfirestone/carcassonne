@@ -7,6 +7,9 @@ body {
 }
 
 header {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 100vw;
 
   img {
@@ -43,9 +46,12 @@ section {
 }
 
 section#section-pre-game {
+  padding-top: 180px;
 }
 
 section#section-player-input {
+  padding-top: 180px;
+
   input {
     display: block;
     margin: 20px auto;
@@ -63,6 +69,7 @@ section#section-player-input {
 }
 
 section#section-game {
+
   #game-aside {
 
     button {
@@ -73,7 +80,8 @@ section#section-game {
       color: #1c477f;
       font-family: $secondary-font;
       font-size: 18px;
-      display: none;
+      opacity: 0;
+      visibility: hidden;
     }
 
     #btn-place-tile {
