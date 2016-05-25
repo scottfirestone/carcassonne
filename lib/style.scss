@@ -381,12 +381,22 @@ section#section-game {
 
     .one-third-right {
       display: inline-block;
-      width: 30%;
+      width: 35%;
 
       img {
-        background-size: cover;
         display: inline-block;
+        position: relative;
+        top: -20px;
         z-index: 21;
+      }
+
+      #valid-city-placement {
+        width: 70%;
+        left: 5%;
+      }
+
+      #invalid-tile-placement {
+        width: 50%;
       }
     }
   }
