@@ -3,20 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>Carcassonne</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+  <script src="vendors/jquery.min.js"></script>
+  <script src="vendors/jquery-ui.min.js"></script>
+  <script src="vendors/TweenMax.min.js"></script>
 </head>
 <body>
-  <header>
-    <img src="lib/images/carcassonne-logo.png" class="logo" alt="carcassonne-logo" />
-  </header>
   <section id="section-pre-game">
     <button id="btn-create-game" type="button" class="btn-primary">Create a New Game</button>
   </section>
   <section id="section-player-input">
+    <label for="player-number">Select the number of players</label>
+    <select name="player-number" id="player-number">
+      <option value="" hidden>Select</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
     <input id="input-player-name-1" type="text" placeholder="Enter Player 1 Name" />
     <input id="input-player-name-2" type="text" placeholder="Enter Player 2 Name" />
+    <input id="input-player-name-3" type="text" placeholder="Enter Player 3 Name" />
+    <input id="input-player-name-4" type="text" placeholder="Enter Player 4 Name" />
+    <input id="input-player-name-5" type="text" placeholder="Enter Player 5 Name" />
     <button id="btn-begin-game" type="button" class="btn-primary">Begin Game</button>
   </section>
   <section id="section-game">
@@ -31,6 +39,9 @@
       <div id="tiles-remaining"></div>
     </aside>
   </section>
+  <header id="header-logo">
+    <img src="lib/images/carcassonne-logo.png" class="logo" alt="carcassonne-logo" />
+  </header>
   <div id="backgroundaudio">
     <i></i>
     <audio src="lib/music/medieval-music.mp3" controls loop autoplay preload>

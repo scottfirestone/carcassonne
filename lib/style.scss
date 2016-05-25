@@ -7,6 +7,9 @@ body {
 }
 
 header {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 100vw;
 
   img {
@@ -43,26 +46,44 @@ section {
 }
 
 section#section-pre-game {
+  padding-top: 180px;
 }
 
 section#section-player-input {
-  input {
+  padding-top: 180px;
+  font-family: $secondary-font;
+  font-size: 24px;
+
+  label {
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    width: 420px;
+    color: white;
+  }
+
+  select, input {
     display: block;
     margin: 20px auto;
     padding: 10px;
     height: 45px;
+    width: 250px;
     font-family: $secondary-font;
     font-size: 24px;
   }
-  input.error {
-    &::-webkit-input-placeholder { color: red; }
-    &::-moz-placeholder { color: red; }
-    &:-moz-placeholder { color: red; }
-    &::-ms-input-placeholder { color: red; }
+
+  select {
+    width: 100px;
+  }
+
+  input {
+    display: none;
   }
 }
 
 section#section-game {
+
   #game-aside {
 
     button {
@@ -80,6 +101,9 @@ section#section-game {
       top: 55px;
       left: 50px;
       width: 215px;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
     }
 
     #btn-place-meeple {
@@ -144,6 +168,18 @@ section#section-game {
   border-color: $blue;
 }
 
+.yellow-border {
+  border-color: $yellow;
+}
+
+.black-border {
+  border-color: $black;
+}
+
+.green-border {
+  border-color: $green;
+}
+
 .tile {
   position: absolute;
   width: 100px;
@@ -205,6 +241,18 @@ section#section-game {
 
   .blue-background {
     background-color: $blue;
+  }
+
+  .green-background {
+    background-color: $green;
+  }
+
+  .yellow-background {
+    background-color: $yellow;
+  }
+
+  .black-background {
+    background-color: $black;
   }
 
   .player-pane {
