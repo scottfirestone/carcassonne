@@ -415,7 +415,7 @@ section#section-game {
   .logo {
     display: block;
     position: relative;
-    right: 35px;
+    width: 100%;
   }
 
   .main-content {
@@ -434,11 +434,12 @@ section#section-game {
     .two-thirds-left {
       display: inline-block;
       margin: 0;
-      width: 60%;
+      width: 50%;
     }
 
     .one-third-right {
       display: inline-block;
+      float: right;
       width: 35%;
 
       img {
@@ -460,6 +461,10 @@ section#section-game {
       #connecting-road {
         width: 80%;
       }
+    }
+
+    #rules-followers {
+      display: block;
     }
 
     #rules-followers img {
@@ -486,28 +491,32 @@ section#section-game {
     }
 
     #tie-city {
-      display: inline-block;
+      display: block;
+      margin: auto;
       left: 25%;
       top: 10px;
       width: 55%;
     }
 
     #cloister-scoring {
-      display: inline-block;
+      display: block;
+      margin: auto;
       left: 25%;
       top: 10px;
       width: 55%;
     }
 
     #farm-scoring-1 {
-      display: inline-block;
+      display: block;
+      margin: auto;
       left: 25%;
       top: 10px;
       width: 55%;
     }
 
     #farm-scoring-2 {
-      display: inline-block;
+      display: block;
+      margin: auto;
       left: 25%;
       top: 18px;
       width: 55%;
