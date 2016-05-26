@@ -333,28 +333,8 @@ section#section-game {
 
 /* background-music */
 
-#backgroundaudio {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  audio {
-    display: none;
-    padding: 5px;
-    vertical-align: middle;
-    height: 43px;
-    z-index: 9998;
-  }
-
-  i {
-    background-image: url("images/sound.png");
-    background-size: cover;
-    display: block;
-    padding: 5px;
-    height: 35px;
-    width: 35px;
-    z-index: 9999;
-  }
+audio {
+  display: none;
 }
 
 /* rules */
