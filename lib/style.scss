@@ -100,7 +100,7 @@ section#section-game {
     #btn-rules {
       display: block;
       top: 0;
-      right: 0;
+      right: 50px;
       margin: 20px;
     }
 
@@ -335,17 +335,12 @@ section#section-game {
 
 #backgroundaudio {
   position: absolute;
-  bottom: -43px;
-  left: 5px;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  top: 20px;
+  right: 20px;
 
   audio {
+    display: none;
     padding: 5px;
-    display: table-cell;
     vertical-align: middle;
     height: 43px;
     z-index: 9998;
@@ -354,24 +349,12 @@ section#section-game {
   i {
     background-image: url("images/sound.png");
     background-size: cover;
-    font-size: 40px;
     display: block;
     padding: 5px;
-    height: 50px;
-    width: 50px;
-    float: none;
-    margin-bottom: -1px;
+    height: 35px;
+    width: 35px;
     z-index: 9999;
   }
-}
-
-#backgroundaudio:hover {
-  bottom: 0;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
 }
 
 /* rules */
@@ -389,7 +372,6 @@ section#section-game {
 
   #modal-rules-content {
     background-color: #F8ECC2;
-    // background-color: #fefefe;
     margin: 5% auto;
     width: 80%;
     padding: 60px;
