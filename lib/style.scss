@@ -97,6 +97,13 @@ section#section-game {
       display: none;
     }
 
+    #btn-rules {
+      display: block;
+      top: 0;
+      right: 50px;
+      margin: 20px;
+    }
+
     #btn-place-tile {
       top: 55px;
       left: 50px;
@@ -326,43 +333,155 @@ section#section-game {
 
 /* background-music */
 
-#backgroundaudio {
-  position: absolute;
-  bottom: -43px;
-  left: 5px;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-
-  audio {
-    padding: 5px;
-    display: table-cell;
-    vertical-align: middle;
-    height: 43px;
-    z-index: 9998;
-  }
-
-  i {
-    background-image: url("images/sound.png");
-    background-size: cover;
-    font-size: 40px;
-    display: block;
-    padding: 5px;
-    height: 50px;
-    width: 50px;
-    float: none;
-    margin-bottom: -1px;
-    z-index: 9999;
-  }
+audio {
+  display: none;
 }
 
-#backgroundaudio:hover {
-  bottom: 0;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+/* rules */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  overflow: auto;
+  background-color: $blue;
+
+  #modal-rules-content {
+    background-color: #F8ECC2;
+    margin: 5% auto;
+    width: 80%;
+    padding: 60px;
+    border: 2px solid #888;
+  }
+
+  #close-rules {
+    padding-right: 10px;
+    color: #aaa;
+    float: right;
+    font-family: $main-font;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  #close-rules:hover,
+  #close-rules:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .logo {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .main-content {
+    font-family: $rules-font;
+    padding-top: 5%;
+
+    h2, h3 {
+      font-family: $medieval-font;
+      padding-top: 20px;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+    .two-thirds-left {
+      display: inline-block;
+      margin: 0;
+      width: 50%;
+    }
+
+    .one-third-right {
+      display: inline-block;
+      float: right;
+      width: 35%;
+
+      img {
+        display: inline-block;
+        position: relative;
+        top: -20px;
+        z-index: 21;
+      }
+
+      #valid-city-placement {
+        width: 70%;
+        left: 5%;
+      }
+
+      #invalid-tile-placement {
+        width: 50%;
+      }
+
+      #connecting-road {
+        width: 80%;
+      }
+    }
+
+    #rules-followers {
+      display: block;
+    }
+
+    #rules-followers img {
+      display: block;
+      position: relative;
+      top: 10px;
+      width: 100%;
+    }
+
+    #road-scoring-1 {
+      display: inline-block;
+      position: relative;
+      top: -100px;
+      width: 150px;
+      left: 10%;
+    }
+
+    #road-scoring-2 {
+      display: inline-block;
+      position: relative;
+      top: 10px;
+      left: 30%;
+      width: 90px;
+    }
+
+    #tie-city {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #cloister-scoring {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-1 {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-2 {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 18px;
+      width: 55%;
+    }
+  }
 }
