@@ -31,6 +31,10 @@
   "white": false,
   "eqnull": true,
   "esnext": true,
-  "unused": true,
-  "mocha": true
+  "mocha": true,
+  "jquery": true,
+  "TimelineMax": false,
+  "_": false,
+  "unused": vars,
+  "esversion": 2015
 }
