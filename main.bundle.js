@@ -93,7 +93,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Marcellus);", ""]);
 
 	// module
-	exports.push([module.id, "/* Fonts */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background-image: url(" + __webpack_require__(4) + "); }\n\nheader {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100vw; }\n  header img {\n    margin: 20px auto;\n    display: block; }\n\nsection {\n  display: none;\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  opacity: 0;\n  visibility: hidden; }\n  section .logo {\n    display: block;\n    margin: auto; }\n  section .btn-primary {\n    display: block;\n    margin: 50px auto;\n    padding: 0 20px;\n    height: 65px;\n    line-height: 65px;\n    border-radius: 5px;\n    background-color: #1c477f;\n    color: white;\n    font-family: \"UnifrakturMaguntia\", cursive;\n    font-size: 32px; }\n\nsection#section-pre-game {\n  padding-top: 180px; }\n\nsection#section-player-input {\n  padding-top: 180px;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 24px; }\n  section#section-player-input label {\n    margin: 20px auto;\n    display: block;\n    padding: 10px;\n    font-size: 30px;\n    width: 420px;\n    color: white; }\n  section#section-player-input select, section#section-player-input input {\n    display: block;\n    margin: 20px auto;\n    padding: 10px;\n    height: 45px;\n    width: 250px;\n    font-family: \"MedievalSharp\", cursive;\n    font-size: 24px; }\n  section#section-player-input select {\n    width: 100px; }\n  section#section-player-input input {\n    display: none; }\n\nsection#section-game #game-aside button {\n  position: absolute;\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: #1c477f;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 18px;\n  display: none; }\n\nsection#section-game #game-aside #btn-rules {\n  display: block;\n  top: 0;\n  right: 50px;\n  margin: 20px; }\n\nsection#section-game #game-aside #btn-place-tile {\n  top: 55px;\n  left: 50px;\n  width: 215px;\n  display: block;\n  opacity: 0;\n  visibility: hidden; }\n\nsection#section-game #game-aside #btn-place-meeple {\n  top: 55px;\n  left: 35px;\n  width: 125px; }\n\nsection#section-game #game-aside #btn-skip-meeple {\n  top: 55px;\n  left: 165px;\n  width: 115px; }\n\nsection#section-game #game-aside #tiles-remaining {\n  position: absolute;\n  color: white;\n  font-family: \"UnifrakturMaguntia\", cursive;\n  font-size: 30px;\n  top: 20px;\n  left: 50px;\n  height: 30px;\n  width: 220px; }\n\n.meeple {\n  width: 25px;\n  height: 25px;\n  background-size: cover;\n  z-index: 2; }\n\n#view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n#board {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-image: url(" + __webpack_require__(4) + ");\n  background-color: brown; }\n\n/* tiles */\n.current-tile {\n  border: 3px solid;\n  z-index: 1; }\n\n.red-border {\n  border-color: #ca0813; }\n\n.blue-border {\n  border-color: #1c477f; }\n\n.yellow-border {\n  border-color: #fecb2f; }\n\n.black-border {\n  border-color: black; }\n\n.green-border {\n  border-color: #149718; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(5) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n\n/* player-info */\n#player-info {\n  position: absolute;\n  z-index: 10;\n  top: 250px;\n  left: 65px;\n  font-family: \"MedievalSharp\", cursive; }\n  #player-info .red-background {\n    background-color: #ca0813; }\n  #player-info .blue-background {\n    background-color: #1c477f; }\n  #player-info .green-background {\n    background-color: #149718; }\n  #player-info .yellow-background {\n    background-color: #fecb2f; }\n  #player-info .black-background {\n    background-color: black; }\n  #player-info .player-pane {\n    display: block;\n    border-style: solid;\n    border-width: 4px;\n    z-index: 10;\n    width: 175px;\n    height: 175px;\n    padding-top: 25px;\n    padding-left: 25px; }\n    #player-info .player-pane .player-name {\n      margin-bottom: 5px; }\n    #player-info .player-pane .player-score {\n      display: inline-block;\n      margin: 0; }\n      #player-info .player-pane .player-score .player-score-value {\n        display: inline-block;\n        padding-top: 20px;\n        vertical-align: top;\n        width: 85px; }\n      #player-info .player-pane .player-score .score-buttons {\n        display: inline-block;\n        margin: 10px; }\n        #player-info .player-pane .player-score .score-buttons .add-to-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 64px;\n          background-size: 42px 42px; }\n        #player-info .player-pane .player-score .score-buttons .subtract-from-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 0;\n          background-size: 42px 42px; }\n    #player-info .player-pane .player-meeple-count {\n      margin: 0; }\n\n.dim {\n  opacity: 0.5; }\n\n.box {\n  background-color: #91e600;\n  width: 100px;\n  height: 100px;\n  line-height: 100px;\n  position: absolute;\n  top: 0;\n  border-radius: 10px; }\n\n/* background-music */\naudio {\n  display: none; }\n\n/* rules */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 20;\n  width: 80%;\n  height: 80%;\n  top: 10%;\n  left: 10%;\n  overflow: auto;\n  background-color: #1c477f; }\n  .modal #modal-rules-content {\n    background-color: #F8ECC2;\n    margin: 5% auto;\n    width: 80%;\n    padding: 60px;\n    border: 2px solid #888; }\n  .modal #close-rules {\n    padding-right: 10px;\n    color: #aaa;\n    float: right;\n    font-family: \"Marck Script\", cursive;\n    font-size: 28px;\n    font-weight: bold; }\n  .modal #close-rules:hover,\n  .modal #close-rules:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer; }\n  .modal .logo {\n    display: block;\n    position: relative;\n    width: 100%; }\n  .modal .main-content {\n    font-family: \"Marcellus\";\n    padding-top: 5%; }\n    .modal .main-content h2, .modal .main-content h3 {\n      font-family: \"UnifrakturMaguntia\", cursive;\n      padding-top: 20px; }\n    .modal .main-content p {\n      padding-top: 10px; }\n    .modal .main-content .two-thirds-left {\n      display: inline-block;\n      margin: 0;\n      width: 50%; }\n    .modal .main-content .one-third-right {\n      display: inline-block;\n      float: right;\n      width: 35%; }\n      .modal .main-content .one-third-right img {\n        display: inline-block;\n        position: relative;\n        top: -20px;\n        z-index: 21; }\n      .modal .main-content .one-third-right #valid-city-placement {\n        width: 70%;\n        left: 5%; }\n      .modal .main-content .one-third-right #invalid-tile-placement {\n        width: 50%; }\n      .modal .main-content .one-third-right #connecting-road {\n        width: 80%; }\n    .modal .main-content #rules-followers {\n      display: block; }\n    .modal .main-content #rules-followers img {\n      display: block;\n      position: relative;\n      top: 10px;\n      width: 100%; }\n    .modal .main-content #road-scoring-1 {\n      display: inline-block;\n      position: relative;\n      top: -100px;\n      width: 150px;\n      left: 10%; }\n    .modal .main-content #road-scoring-2 {\n      display: inline-block;\n      position: relative;\n      top: 10px;\n      left: 30%;\n      width: 90px; }\n    .modal .main-content #tie-city {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #cloister-scoring {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-1 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-2 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 18px;\n      width: 55%; }\n", ""]);
+	exports.push([module.id, "/* Fonts */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background-image: url(" + __webpack_require__(4) + "); }\n\nheader {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100vw; }\n  header img {\n    margin: 20px auto;\n    display: block; }\n\nsection {\n  display: none;\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  opacity: 0;\n  visibility: hidden; }\n  section .logo {\n    display: block;\n    margin: auto; }\n  section .btn-primary {\n    display: block;\n    margin: 50px auto;\n    padding: 0 20px;\n    height: 65px;\n    line-height: 65px;\n    border-radius: 5px;\n    background-color: #1c477f;\n    color: white;\n    font-family: \"UnifrakturMaguntia\", cursive;\n    font-size: 32px; }\n\nsection#section-pre-game {\n  padding-top: 180px; }\n\nsection#section-player-input {\n  padding-top: 180px;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 24px; }\n  section#section-player-input label {\n    margin: 20px auto;\n    display: block;\n    padding: 10px;\n    font-size: 30px;\n    width: 420px;\n    color: white; }\n  section#section-player-input select, section#section-player-input input {\n    display: block;\n    margin: 20px auto;\n    padding: 10px;\n    height: 45px;\n    width: 250px;\n    font-family: \"MedievalSharp\", cursive;\n    font-size: 24px; }\n  section#section-player-input select {\n    width: 100px; }\n  section#section-player-input input {\n    display: none; }\n\nsection#section-game #game-aside button {\n  position: absolute;\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: #1c477f;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 18px;\n  display: none; }\n\nsection#section-game #game-aside #btn-rules {\n  position: fixed;\n  display: block;\n  top: 0;\n  right: 50px;\n  margin: 20px; }\n\nsection#section-game #game-aside #btn-place-tile {\n  top: 55px;\n  left: 50px;\n  width: 215px;\n  display: block;\n  opacity: 0;\n  visibility: hidden; }\n\nsection#section-game #game-aside #btn-place-meeple {\n  top: 55px;\n  left: 35px;\n  width: 125px; }\n\nsection#section-game #game-aside #btn-skip-meeple {\n  top: 55px;\n  left: 165px;\n  width: 115px; }\n\nsection#section-game #game-aside #tiles-remaining {\n  position: absolute;\n  color: white;\n  font-family: \"UnifrakturMaguntia\", cursive;\n  font-size: 30px;\n  top: 20px;\n  left: 50px;\n  height: 30px;\n  width: 220px; }\n\n.meeple {\n  width: 25px;\n  height: 25px;\n  background-size: cover;\n  z-index: 2; }\n\n#view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n#board {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-image: url(" + __webpack_require__(4) + ");\n  background-color: brown; }\n\n/* tiles */\n.current-tile {\n  border: 3px solid;\n  z-index: 1; }\n\n.red-border {\n  border-color: #ca0813; }\n\n.blue-border {\n  border-color: #1c477f; }\n\n.yellow-border {\n  border-color: #fecb2f; }\n\n.black-border {\n  border-color: gray; }\n\n.green-border {\n  border-color: #149718; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(5) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n\n/* player-info */\n#player-info {\n  position: absolute;\n  z-index: 10;\n  top: 250px;\n  left: 65px;\n  font-family: \"MedievalSharp\", cursive; }\n  #player-info .red-background {\n    background-color: #ca0813; }\n  #player-info .blue-background {\n    background-color: #1c477f; }\n  #player-info .green-background {\n    background-color: #149718; }\n  #player-info .yellow-background {\n    background-color: #fecb2f; }\n  #player-info .black-background {\n    background-color: gray; }\n  #player-info .player-pane {\n    display: block;\n    border-style: solid;\n    border-width: 4px;\n    z-index: 10;\n    width: 175px;\n    height: 175px;\n    padding-top: 25px;\n    padding-left: 25px; }\n    #player-info .player-pane .player-name {\n      margin-bottom: 5px; }\n    #player-info .player-pane .player-score {\n      display: inline-block;\n      margin: 0; }\n      #player-info .player-pane .player-score .player-score-value {\n        display: inline-block;\n        padding-top: 20px;\n        vertical-align: top;\n        width: 85px; }\n      #player-info .player-pane .player-score .score-buttons {\n        display: inline-block;\n        margin: 10px; }\n        #player-info .player-pane .player-score .score-buttons .add-to-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 64px;\n          background-size: 42px 42px; }\n        #player-info .player-pane .player-score .score-buttons .subtract-from-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 0;\n          background-size: 42px 42px; }\n    #player-info .player-pane .player-meeple-count {\n      margin: 0; }\n\n.dim {\n  opacity: 0.5; }\n\n.box {\n  background-color: #91e600;\n  width: 100px;\n  height: 100px;\n  line-height: 100px;\n  position: absolute;\n  top: 0;\n  border-radius: 10px; }\n\n/* background-music */\naudio {\n  display: none; }\n\n/* rules */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 20;\n  width: 80%;\n  height: 80%;\n  top: 10%;\n  left: 10%;\n  overflow: auto;\n  background-color: #1c477f; }\n  .modal #modal-rules-content {\n    background-color: #F8ECC2;\n    margin: 5% auto;\n    width: 80%;\n    padding: 60px;\n    border: 2px solid #888; }\n  .modal #close-rules {\n    padding-right: 10px;\n    color: #aaa;\n    float: right;\n    font-family: \"Marck Script\", cursive;\n    font-size: 28px;\n    font-weight: bold; }\n  .modal #close-rules:hover,\n  .modal #close-rules:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer; }\n  .modal .logo {\n    display: block;\n    position: relative;\n    width: 100%; }\n  .modal .main-content {\n    font-family: \"Marcellus\";\n    padding-top: 5%; }\n    .modal .main-content h2, .modal .main-content h3 {\n      font-family: \"UnifrakturMaguntia\", cursive;\n      padding-top: 20px; }\n    .modal .main-content p {\n      padding-top: 10px; }\n    .modal .main-content .two-thirds-left {\n      display: inline-block;\n      margin: 0;\n      width: 50%; }\n    .modal .main-content .one-third-right {\n      display: inline-block;\n      float: right;\n      width: 35%; }\n      .modal .main-content .one-third-right img {\n        display: inline-block;\n        position: relative;\n        top: -20px;\n        z-index: 21; }\n      .modal .main-content .one-third-right #valid-city-placement {\n        width: 70%;\n        left: 5%; }\n      .modal .main-content .one-third-right #invalid-tile-placement {\n        width: 50%; }\n      .modal .main-content .one-third-right #connecting-road {\n        width: 80%; }\n    .modal .main-content #rules-followers {\n      display: block; }\n    .modal .main-content #rules-followers img {\n      display: block;\n      position: relative;\n      top: 10px;\n      width: 100%; }\n    .modal .main-content #road-scoring-1 {\n      display: inline-block;\n      position: relative;\n      top: -100px;\n      width: 150px;\n      left: 10%; }\n    .modal .main-content #road-scoring-2 {\n      display: inline-block;\n      position: relative;\n      top: 10px;\n      left: 30%;\n      width: 90px; }\n    .modal .main-content #tie-city {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #cloister-scoring {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-1 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-2 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 18px;\n      width: 55%; }\n", ""]);
 
 	// exports
 
@@ -516,7 +516,6 @@
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      this.grid = new Grid();
 	      var rules = new Rules();
 	      rules.prepare();
 	      this.buildPlayers();
@@ -556,7 +555,7 @@
 	    value: function setupStartingTile() {
 	      this.currentTile = this.tileInventory.nextTile();
 	      dom('gameBoard').append(this.currentTile.dom);
-	      this.currentTile.setPosition(500, 500);
+	      this.currentTile.setPosition(600, 400);
 	      this.tileInventory.addAdjacentCoordinates(this.currentTile.x, this.currentTile.y);
 	      this.currentTile.dom.draggable({ snap: true });
 	      this.currentTile.dom.draggable('disable');
@@ -583,6 +582,7 @@
 	  }, {
 	    key: 'nextTurn',
 	    value: function nextTurn(e) {
+	      this.grid = new Grid();
 	      this.grid.checkTilePositionAgainstBoard(this);
 
 	      this.currentPlayer.playerInfo.dom.addClass('dim');
@@ -17413,8 +17413,8 @@
 	    key: 'position',
 	    get: function get() {
 	      var position = this.dom.position();
-	      var x = this.dom.position().left;
-	      var y = this.dom.position().top;
+	      var x = Math.round(this.dom.position().left);
+	      var y = Math.round(this.dom.position().top);
 	      return { x: x, y: y };
 	    }
 	  }]);
@@ -17460,20 +17460,20 @@
 	    _classCallCheck(this, Grid);
 
 	    this.width = $('#view').outerWidth();
-	    this.height = $('#board').outerHeight();
+	    this.height = $('#view').outerHeight();
 	  }
 
 	  _createClass(Grid, [{
 	    key: 'increaseWidth',
 	    value: function increaseWidth() {
 	      var viewWidth = this.width + config('tileWidth');
-	      this.width = $('#board').outerWidth(viewWidth).outerWidth();
+	      this.width = $('#view').outerWidth(viewWidth).outerWidth();
 	    }
 	  }, {
 	    key: 'increaseHeight',
 	    value: function increaseHeight() {
 	      var viewHeight = this.height + config('tileHeight');
-	      this.height = $('#board').outerHeight(viewHeight).outerHeight();
+	      this.height = $('#view').outerHeight(viewHeight).outerHeight();
 	    }
 	  }, {
 	    key: 'checkTilePositionAgainstBoard',
@@ -17509,7 +17509,7 @@
 	            tile.setPosition(x, tile.y);
 	          }
 
-	          // loop through each player
+	          // move adjacentPositions to the right
 	        } catch (err) {
 	          _didIteratorError = true;
 	          _iteratorError = err;
@@ -17530,36 +17530,13 @@
 	        var _iteratorError2 = undefined;
 
 	        try {
-	          for (var _iterator2 = game.players[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var player = _step2.value;
+	          for (var _iterator2 = game.tileInventory.adjacentPositions[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var coord = _step2.value;
 
-	            // loop through each played meeple and move right
-	            var _iteratorNormalCompletion3 = true;
-	            var _didIteratorError3 = false;
-	            var _iteratorError3 = undefined;
-
-	            try {
-	              for (var _iterator3 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	                var meeple = _step3.value;
-
-	                var x = meeple.x + config('tileWidth');
-	                meeple.setPosition(x, meeple.y);
-	              }
-	            } catch (err) {
-	              _didIteratorError3 = true;
-	              _iteratorError3 = err;
-	            } finally {
-	              try {
-	                if (!_iteratorNormalCompletion3 && _iterator3['return']) {
-	                  _iterator3['return']();
-	                }
-	              } finally {
-	                if (_didIteratorError3) {
-	                  throw _iteratorError3;
-	                }
-	              }
-	            }
+	            coord[0] += config('tileWidth');
 	          }
+
+	          // loop through each player
 	        } catch (err) {
 	          _didIteratorError2 = true;
 	          _iteratorError2 = err;
@@ -17574,6 +17551,56 @@
 	            }
 	          }
 	        }
+
+	        var _iteratorNormalCompletion3 = true;
+	        var _didIteratorError3 = false;
+	        var _iteratorError3 = undefined;
+
+	        try {
+	          for (var _iterator3 = game.players[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	            var player = _step3.value;
+
+	            // loop through each played meeple and move right
+	            var _iteratorNormalCompletion4 = true;
+	            var _didIteratorError4 = false;
+	            var _iteratorError4 = undefined;
+
+	            try {
+	              for (var _iterator4 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	                var meeple = _step4.value;
+
+	                var x = meeple.x + config('tileWidth');
+	                meeple.setPosition(x, meeple.y);
+	              }
+	            } catch (err) {
+	              _didIteratorError4 = true;
+	              _iteratorError4 = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion4 && _iterator4['return']) {
+	                  _iterator4['return']();
+	                }
+	              } finally {
+	                if (_didIteratorError4) {
+	                  throw _iteratorError4;
+	                }
+	              }
+	            }
+	          }
+	        } catch (err) {
+	          _didIteratorError3 = true;
+	          _iteratorError3 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion3 && _iterator3['return']) {
+	              _iterator3['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError3) {
+	              throw _iteratorError3;
+	            }
+	          }
+	        }
 	      }
 	    }
 	  }, {
@@ -17583,69 +17610,19 @@
 	        this.increaseHeight();
 
 	        // move each played tile down
-	        var _iteratorNormalCompletion4 = true;
-	        var _didIteratorError4 = false;
-	        var _iteratorError4 = undefined;
-
-	        try {
-	          for (var _iterator4 = game.tileInventory.tilesPlayed[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-	            var tile = _step4.value;
-
-	            var y = tile.y + config('tileHeight');
-	            tile.setPosition(tile.x, y);
-	          }
-
-	          // loop through each player
-	        } catch (err) {
-	          _didIteratorError4 = true;
-	          _iteratorError4 = err;
-	        } finally {
-	          try {
-	            if (!_iteratorNormalCompletion4 && _iterator4['return']) {
-	              _iterator4['return']();
-	            }
-	          } finally {
-	            if (_didIteratorError4) {
-	              throw _iteratorError4;
-	            }
-	          }
-	        }
-
 	        var _iteratorNormalCompletion5 = true;
 	        var _didIteratorError5 = false;
 	        var _iteratorError5 = undefined;
 
 	        try {
-	          for (var _iterator5 = game.players[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-	            var player = _step5.value;
+	          for (var _iterator5 = game.tileInventory.tilesPlayed[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+	            var tile = _step5.value;
 
-	            // loop through each played meeple and move down
-	            var _iteratorNormalCompletion6 = true;
-	            var _didIteratorError6 = false;
-	            var _iteratorError6 = undefined;
-
-	            try {
-	              for (var _iterator6 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-	                var meeple = _step6.value;
-
-	                var y = meeple.y + config('tileHeight');
-	                meeple.setPosition(meeple.x, y);
-	              }
-	            } catch (err) {
-	              _didIteratorError6 = true;
-	              _iteratorError6 = err;
-	            } finally {
-	              try {
-	                if (!_iteratorNormalCompletion6 && _iterator6['return']) {
-	                  _iterator6['return']();
-	                }
-	              } finally {
-	                if (_didIteratorError6) {
-	                  throw _iteratorError6;
-	                }
-	              }
-	            }
+	            var y = tile.y + config('tileHeight');
+	            tile.setPosition(tile.x, y);
 	          }
+
+	          // move adjacentPositions down
 	        } catch (err) {
 	          _didIteratorError5 = true;
 	          _iteratorError5 = err;
@@ -17660,12 +17637,89 @@
 	            }
 	          }
 	        }
+
+	        var _iteratorNormalCompletion6 = true;
+	        var _didIteratorError6 = false;
+	        var _iteratorError6 = undefined;
+
+	        try {
+	          for (var _iterator6 = game.tileInventory.adjacentPositions[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+	            var coord = _step6.value;
+
+	            coord[1] += config('tileHeight');
+	          }
+
+	          // loop through each player
+	        } catch (err) {
+	          _didIteratorError6 = true;
+	          _iteratorError6 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion6 && _iterator6['return']) {
+	              _iterator6['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError6) {
+	              throw _iteratorError6;
+	            }
+	          }
+	        }
+
+	        var _iteratorNormalCompletion7 = true;
+	        var _didIteratorError7 = false;
+	        var _iteratorError7 = undefined;
+
+	        try {
+	          for (var _iterator7 = game.players[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+	            var player = _step7.value;
+
+	            // loop through each played meeple and move down
+	            var _iteratorNormalCompletion8 = true;
+	            var _didIteratorError8 = false;
+	            var _iteratorError8 = undefined;
+
+	            try {
+	              for (var _iterator8 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+	                var meeple = _step8.value;
+
+	                var y = meeple.y + config('tileHeight');
+	                meeple.setPosition(meeple.x, y);
+	              }
+	            } catch (err) {
+	              _didIteratorError8 = true;
+	              _iteratorError8 = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion8 && _iterator8['return']) {
+	                  _iterator8['return']();
+	                }
+	              } finally {
+	                if (_didIteratorError8) {
+	                  throw _iteratorError8;
+	                }
+	              }
+	            }
+	          }
+	        } catch (err) {
+	          _didIteratorError7 = true;
+	          _iteratorError7 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion7 && _iterator7['return']) {
+	              _iterator7['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError7) {
+	              throw _iteratorError7;
+	            }
+	          }
+	        }
 	      }
 	    }
 	  }, {
 	    key: 'checkBottom',
 	    value: function checkBottom(game) {
-	      if (this.height - game.currentTile.y <= config('tileHeight') * 2) {
+	      if (this.height - game.currentTile.y <= config('tileHeight') * 3) {
 	        this.increaseHeight();
 	      }
 	    }
