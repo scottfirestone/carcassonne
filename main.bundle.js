@@ -47,12 +47,11 @@
 	"use strict";
 
 	__webpack_require__(1);
-
 	var Game = __webpack_require__(8);
 
 	$(document).ready(function () {
 	  var game = new Game();
-	  game.start();
+	  game.prepare();
 	});
 
 /***/ },
@@ -87,10 +86,14 @@
 
 	exports = module.exports = __webpack_require__(3)();
 	// imports
-
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Marck+Script);", ""]);
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Courgette);", ""]);
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=MedievalSharp);", ""]);
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=UnifrakturMaguntia);", ""]);
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Marcellus);", ""]);
 
 	// module
-	exports.push([module.id, "body {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\n.view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n.board {\n  position: absolute;\n  width: 3000px;\n  height: 3000px;\n  background-image: url(" + __webpack_require__(4) + ");\n  background-color: brown; }\n\n/* Buttons */\n#btn-place-tile {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 85px;\n  z-index: 10; }\n\n#btn-place-meeple {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 75px;\n  z-index: 10;\n  display: none; }\n\n#btn-skip-meeple {\n  position: absolute;\n  background-color: white;\n  top: 70px;\n  left: 170px;\n  z-index: 10;\n  display: none; }\n\n#tiles-remaining {\n  position: absolute;\n  color: white;\n  font-size: 30px;\n  top: 20px;\n  left: 50px;\n  height: 30px;\n  z-index: 10; }\n\n/* tiles */\n.current-tile {\n  top: 0;\n  right: 0;\n  border: 3px solid white;\n  z-index: 1; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* meeples */\n.meeple {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(5) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n\n/* player-info */\n.player-info {\n  position: absolute;\n  z-index: 10;\n  top: 250px;\n  left: 50px; }\n\n.player-pane {\n  display: block;\n  border-style: solid;\n  border-width: 4px;\n  z-index: 10;\n  width: 175px;\n  height: 175px;\n  padding-left: 20px; }\n\n.player-name {\n  margin-bottom: 5px; }\n\n.player-score {\n  display: inline-block;\n  margin: 0; }\n\n.player-score-value {\n  display: inline-block;\n  padding-bottom: 10px;\n  margin-bottom: 5px;\n  vertical-align: top; }\n\n.score-buttons {\n  display: inline-block;\n  margin: 10px; }\n\n.add-to-score {\n  display: block;\n  height: 20px;\n  width: 20px;\n  background-image: url(" + __webpack_require__(6) + ");\n  background-position: 0 64px;\n  background-size: 42px 42px; }\n\n.subtract-from-score {\n  display: block;\n  height: 20px;\n  width: 20px;\n  background-image: url(" + __webpack_require__(6) + ");\n  background-position: 0 0;\n  background-size: 42px 42px; }\n\n.player-meeple-count {\n  margin: 0; }\n", ""]);
+	exports.push([module.id, "/* Fonts */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  position: relative;\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background-image: url(" + __webpack_require__(4) + "); }\n\nheader {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100vw; }\n  header img {\n    margin: 20px auto;\n    display: block; }\n\nsection {\n  display: none;\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  opacity: 0;\n  visibility: hidden; }\n  section .logo {\n    display: block;\n    margin: auto; }\n  section .btn-primary {\n    display: block;\n    margin: 50px auto;\n    padding: 0 20px;\n    height: 65px;\n    line-height: 65px;\n    border-radius: 5px;\n    background-color: #1c477f;\n    color: white;\n    font-family: \"UnifrakturMaguntia\", cursive;\n    font-size: 32px; }\n\nsection#section-pre-game {\n  padding-top: 180px; }\n\nsection#section-player-input {\n  padding-top: 180px;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 24px; }\n  section#section-player-input label {\n    margin: 20px auto;\n    display: block;\n    padding: 10px;\n    font-size: 30px;\n    width: 420px;\n    color: white; }\n  section#section-player-input select, section#section-player-input input {\n    display: block;\n    margin: 20px auto;\n    padding: 10px;\n    height: 45px;\n    width: 250px;\n    font-family: \"MedievalSharp\", cursive;\n    font-size: 24px; }\n  section#section-player-input select {\n    width: 100px; }\n  section#section-player-input input {\n    display: none; }\n\nsection#section-game #game-aside button {\n  position: absolute;\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: #1c477f;\n  font-family: \"MedievalSharp\", cursive;\n  font-size: 18px;\n  display: none; }\n\nsection#section-game #game-aside #btn-rules {\n  display: block;\n  top: 0;\n  right: 50px;\n  margin: 20px; }\n\nsection#section-game #game-aside #btn-place-tile {\n  top: 55px;\n  left: 50px;\n  width: 215px;\n  display: block;\n  opacity: 0;\n  visibility: hidden; }\n\nsection#section-game #game-aside #btn-place-meeple {\n  top: 55px;\n  left: 35px;\n  width: 125px; }\n\nsection#section-game #game-aside #btn-skip-meeple {\n  top: 55px;\n  left: 165px;\n  width: 115px; }\n\nsection#section-game #game-aside #tiles-remaining {\n  position: absolute;\n  color: white;\n  font-family: \"UnifrakturMaguntia\", cursive;\n  font-size: 30px;\n  top: 20px;\n  left: 50px;\n  height: 30px;\n  width: 220px; }\n\n.meeple {\n  width: 25px;\n  height: 25px;\n  background-size: cover;\n  z-index: 2; }\n\n#view {\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  overflow: auto; }\n\n#board {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-image: url(" + __webpack_require__(4) + ");\n  background-color: brown; }\n\n/* tiles */\n.current-tile {\n  border: 3px solid;\n  z-index: 1; }\n\n.red-border {\n  border-color: #ca0813; }\n\n.blue-border {\n  border-color: #1c477f; }\n\n.yellow-border {\n  border-color: #fecb2f; }\n\n.black-border {\n  border-color: black; }\n\n.green-border {\n  border-color: #149718; }\n\n.tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  background-color: white;\n  background-size: cover; }\n\n/* rotations */\n.rotate-tile {\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  top: 0;\n  right: 0;\n  background-image: url(" + __webpack_require__(5) + ");\n  background-size: cover;\n  opacity: 0.4;\n  display: none; }\n\n.rotate90 {\n  transform: rotate(90deg); }\n\n.rotate180 {\n  transform: rotate(180deg); }\n\n.rotate270 {\n  transform: rotate(270deg); }\n\n.rotate90 > .rotate-tile {\n  transform: rotate(-90deg); }\n\n.rotate180 > .rotate-tile {\n  transform: rotate(-180deg); }\n\n.rotate270 > .rotate-tile {\n  transform: rotate(-270deg); }\n\n/* player-info */\n#player-info {\n  position: absolute;\n  z-index: 10;\n  top: 250px;\n  left: 65px;\n  font-family: \"MedievalSharp\", cursive; }\n  #player-info .red-background {\n    background-color: #ca0813; }\n  #player-info .blue-background {\n    background-color: #1c477f; }\n  #player-info .green-background {\n    background-color: #149718; }\n  #player-info .yellow-background {\n    background-color: #fecb2f; }\n  #player-info .black-background {\n    background-color: black; }\n  #player-info .player-pane {\n    display: block;\n    border-style: solid;\n    border-width: 4px;\n    z-index: 10;\n    width: 175px;\n    height: 175px;\n    padding-top: 25px;\n    padding-left: 25px; }\n    #player-info .player-pane .player-name {\n      margin-bottom: 5px; }\n    #player-info .player-pane .player-score {\n      display: inline-block;\n      margin: 0; }\n      #player-info .player-pane .player-score .player-score-value {\n        display: inline-block;\n        padding-top: 20px;\n        vertical-align: top;\n        width: 85px; }\n      #player-info .player-pane .player-score .score-buttons {\n        display: inline-block;\n        margin: 10px; }\n        #player-info .player-pane .player-score .score-buttons .add-to-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 64px;\n          background-size: 42px 42px; }\n        #player-info .player-pane .player-score .score-buttons .subtract-from-score {\n          display: block;\n          height: 20px;\n          width: 20px;\n          background-image: url(" + __webpack_require__(6) + ");\n          background-position: 0 0;\n          background-size: 42px 42px; }\n    #player-info .player-pane .player-meeple-count {\n      margin: 0; }\n\n.dim {\n  opacity: 0.5; }\n\n.box {\n  background-color: #91e600;\n  width: 100px;\n  height: 100px;\n  line-height: 100px;\n  position: absolute;\n  top: 0;\n  border-radius: 10px; }\n\n/* background-music */\naudio {\n  display: none; }\n\n/* rules */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 20;\n  width: 80%;\n  height: 80%;\n  top: 10%;\n  left: 10%;\n  overflow: auto;\n  background-color: #1c477f; }\n  .modal #modal-rules-content {\n    background-color: #F8ECC2;\n    margin: 5% auto;\n    width: 80%;\n    padding: 60px;\n    border: 2px solid #888; }\n  .modal #close-rules {\n    padding-right: 10px;\n    color: #aaa;\n    float: right;\n    font-family: \"Marck Script\", cursive;\n    font-size: 28px;\n    font-weight: bold; }\n  .modal #close-rules:hover,\n  .modal #close-rules:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer; }\n  .modal .logo {\n    display: block;\n    position: relative;\n    width: 100%; }\n  .modal .main-content {\n    font-family: \"Marcellus\";\n    padding-top: 5%; }\n    .modal .main-content h2, .modal .main-content h3 {\n      font-family: \"UnifrakturMaguntia\", cursive;\n      padding-top: 20px; }\n    .modal .main-content p {\n      padding-top: 10px; }\n    .modal .main-content .two-thirds-left {\n      display: inline-block;\n      margin: 0;\n      width: 50%; }\n    .modal .main-content .one-third-right {\n      display: inline-block;\n      float: right;\n      width: 35%; }\n      .modal .main-content .one-third-right img {\n        display: inline-block;\n        position: relative;\n        top: -20px;\n        z-index: 21; }\n      .modal .main-content .one-third-right #valid-city-placement {\n        width: 70%;\n        left: 5%; }\n      .modal .main-content .one-third-right #invalid-tile-placement {\n        width: 50%; }\n      .modal .main-content .one-third-right #connecting-road {\n        width: 80%; }\n    .modal .main-content #rules-followers {\n      display: block; }\n    .modal .main-content #rules-followers img {\n      display: block;\n      position: relative;\n      top: 10px;\n      width: 100%; }\n    .modal .main-content #road-scoring-1 {\n      display: inline-block;\n      position: relative;\n      top: -100px;\n      width: 150px;\n      left: 10%; }\n    .modal .main-content #road-scoring-2 {\n      display: inline-block;\n      position: relative;\n      top: 10px;\n      left: 30%;\n      width: 90px; }\n    .modal .main-content #tie-city {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #cloister-scoring {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-1 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 10px;\n      width: 55%; }\n    .modal .main-content #farm-scoring-2 {\n      display: block;\n      margin: auto;\n      left: 25%;\n      top: 18px;\n      width: 55%; }\n", ""]);
 
 	// exports
 
@@ -404,11 +407,12 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var Tile = __webpack_require__(9);
+	var dom = __webpack_require__(9).dom;
 	var TileInventory = __webpack_require__(10);
-	var Grid = __webpack_require__(13);
-	var Player = __webpack_require__(14);
-	var Meeple = __webpack_require__(16);
+	var Grid = __webpack_require__(15);
+	var Player = __webpack_require__(16);
+	var Animations = __webpack_require__(20);
+	var Rules = __webpack_require__(21);
 
 	var Game = (function () {
 	  function Game() {
@@ -416,32 +420,153 @@
 
 	    this.tileInventory = null;
 	    this.currentTile = null;
-	    this.player1 = null;
-	    this.player2 = null;
+	    this.playerNumber = null;
+	    this.players = [];
 	    this.currentPlayer = null;
 	    this.currentMeeple = null;
-	    this.setup();
+	    this.grid = null;
+	    this.sectionId = null;
+	    this.animations = new Animations();
 	  }
 
 	  _createClass(Game, [{
-	    key: 'setup',
-	    value: function setup() {
-	      $('#btn-place-tile').on('click', this.placeTile.bind(this));
-	      $('#btn-place-meeple').on('click', this.placeMeeple.bind(this));
-	      $('#btn-skip-meeple').on('click', this.skipMeeple.bind(this));
+	    key: 'prepare',
+	    value: function prepare() {
+	      this.animations.sectionSwap('section-pre-game', this.prepareAnimationCompleted.bind(this));
+	    }
+	  }, {
+	    key: 'prepareAnimationCompleted',
+	    value: function prepareAnimationCompleted(info) {
+	      dom('buttonCreateGame').on('click', this.buttonCreateGameClicked.bind(this));
+	    }
+	  }, {
+	    key: 'buttonCreateGameClicked',
+	    value: function buttonCreateGameClicked(e) {
+	      dom('buttonCreateGame').off('click');
+	      this.animations.sectionSwap('section-player-input', this.gameCreateAnimationCompleted.bind(this));
+	    }
+	  }, {
+	    key: 'gameCreateAnimationCompleted',
+	    value: function gameCreateAnimationCompleted(info) {
+	      $('#player-number').on('change', (function (e) {
+	        var optionSelected = $(e.target).find("option:selected");
+	        this.playerNumber = optionSelected.text();
+	        this.revealPlayerNameInputs(this.playerNumber);
+	        dom('buttonBeginGame').on('click', this.buttonBeginGameClicked.bind(this));
+	      }).bind(this));
+	    }
+	  }, {
+	    key: 'revealPlayerNameInputs',
+	    value: function revealPlayerNameInputs(num) {
+	      for (var i = 1; i <= num; i++) {
+	        $('#input-player-name-' + i).css('display', 'block');
+	      }
+	      for (var i = 5; i > num; i--) {
+	        $('#input-player-name-' + i).hide();
+	      }
+	    }
+	  }, {
+	    key: 'buttonBeginGameClicked',
+	    value: function buttonBeginGameClicked(e) {
+	      this.validateNames();
+	      dom('buttonBeginGame').off('click');
+	      this.animations.sectionPlayerInputHide(this.gameBeginAnimationCompleted.bind(this));
+	    }
+	  }, {
+	    key: 'validateNames',
+	    value: function validateNames() {
+	      var fields = [dom('inputPlayerName1'), dom('inputPlayerName2'), dom('inputPlayerName3'), dom('inputPlayerName4'), dom('inputPlayerName5')];
+
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = fields[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var field = _step.value;
+
+	          if (field.val().includes('<') || field.val().includes('>')) {
+	            field.val('Player ' + field[0].id.slice(-1));
+	          } else if (/^\s*$/.test(field.val())) {
+	            field.val('Player ' + field[0].id.slice(-1));
+	          } else if (field.val().length > 12) {
+	            field.val(field.val().substring(0, 12) + "...");
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator['return']) {
+	            _iterator['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'gameBeginAnimationCompleted',
+	    value: function gameBeginAnimationCompleted(info) {
+	      this.start();
 	    }
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      this.tileInventory = new TileInventory();
-	      this.player1 = new Player("Kimi", "red");
-	      this.player2 = new Player("Scott", "blue");
-	      this.currentPlayer = this.player2;
-	      this.currentTile = this.tileInventory.nextTile();
-	      $('.board').append(this.currentTile.dom);
-	      this.currentTile.setPosition(500, 300);
-	      this.currentTile.show();
+	      this.grid = new Grid();
+	      var rules = new Rules();
+	      rules.prepare();
+	      this.buildPlayers();
+	      this.buildTileInventory();
+	      this.setupStartingTile();
+	      var startingTileDom = this.currentTile.dom;
 	      this.nextTurn();
+	      this.attachEventListeners();
+	      this.animations.sectionGameShow(startingTileDom);
+	    }
+	  }, {
+	    key: 'buildPlayers',
+	    value: function buildPlayers() {
+	      var playerNames = [];
+	      for (var i = 1; i <= this.playerNumber; i++) {
+	        playerNames[i] = dom('inputPlayerName' + i).val();
+	      }
+
+	      var colors = ["red", "blue", "green", "yellow", "black"];
+
+	      playerNames.forEach((function (playerName, i) {
+	        var player = new Player(playerName, colors[i - 1]);
+	        this.players.push(player);
+	        player.buildSetUp();
+	      }).bind(this));
+
+	      this.currentPlayer = this.players.slice(-1)[0];
+	    }
+	  }, {
+	    key: 'buildTileInventory',
+	    value: function buildTileInventory() {
+	      this.tileInventory = new TileInventory();
+	      this.tileInventory.build();
+	    }
+	  }, {
+	    key: 'setupStartingTile',
+	    value: function setupStartingTile() {
+	      this.currentTile = this.tileInventory.nextTile();
+	      dom('gameBoard').append(this.currentTile.dom);
+	      this.currentTile.setPosition(500, 500);
+	      this.tileInventory.addAdjacentCoordinates(this.currentTile.x, this.currentTile.y);
+	      this.currentTile.dom.draggable({ snap: true });
+	      this.currentTile.dom.draggable('disable');
+	    }
+	  }, {
+	    key: 'attachEventListeners',
+	    value: function attachEventListeners() {
+	      dom('buttonPlaceTile').on('click', this.placeTile.bind(this));
+	      dom('buttonPlaceMeeple').on('click', this.placeMeeple.bind(this));
+	      dom('buttonSkipMeeple').on('click', this.skipMeeple.bind(this));
 	    }
 	  }, {
 	    key: 'updateTileCount',
@@ -458,30 +583,34 @@
 	  }, {
 	    key: 'nextTurn',
 	    value: function nextTurn(e) {
+	      this.grid.checkTilePositionAgainstBoard(this);
+
+	      this.currentPlayer.playerInfo.dom.addClass('dim');
 	      this.changeCurrentPlayer();
+	      this.currentPlayer.playerInfo.dom.removeClass('dim');
+	      this.currentTile.removeBorder();
 	      this.currentTile = this.tileInventory.nextTile();
 	      this.currentTile.setPosition(100, 100);
 	      this.currentTile.activate();
+	      this.currentTile.dom.addClass(this.currentPlayer.color + '-border');
 	      this.updateTileCount();
 	    }
 	  }, {
 	    key: 'changeCurrentPlayer',
 	    value: function changeCurrentPlayer() {
-	      if (this.currentPlayer === this.player1) {
-	        this.currentPlayer = this.player2;
-	      } else {
-	        this.currentPlayer = this.player1;
-	      }
+	      this.currentPlayer = this.players.shift();
+	      this.players.push(this.currentPlayer);
 	    }
 	  }, {
 	    key: 'placeTile',
 	    value: function placeTile(e) {
 	      var position = this.currentTile.position;
-	      var isValid = this.tileInventory.isPositionOpen(position.x, position.y);
-	      if (isValid) {
+	      var isOpen = this.tileInventory.isPositionOpen(position.x, position.y);
+	      var isAdjacent = this.tileInventory.isPositionAdjacent(position.x, position.y);
+	      if (isAdjacent && isOpen) {
 	        this.currentTile.setPosition(position.x, position.y);
+	        this.tileInventory.addAdjacentCoordinates(position.x, position.y);
 	        this.currentTile.deactivate();
-	        $('.board').append(this.currentTile.dom);
 	        if (this.currentPlayer.meepleInventory.meeplesUnplayed.length > 0) {
 	          this.showPlaceMeepleButtons();
 	          this.showMeeple();
@@ -489,7 +618,7 @@
 	          this.nextTurn();
 	        }
 	      } else {
-	        alert("Pick a location that hasn't been taken!");
+	        alert("This is an invalid position");
 	      }
 	    }
 	  }, {
@@ -529,11 +658,11 @@
 	      // meeple can only be placed on current tile
 	      if (inXRange && inYRange) {
 	        this.currentMeeple.setPosition(meeplePosition.x, meeplePosition.y);
-	        this.currentMeeple.dom.on('click', this.removeMeeple.bind(this));
+	        this.currentMeeple.dom.on('click', this.targetMeeple.bind(this));
 	        this.currentMeeple.deactivate();
 	        meeplesPlayed.push(meeplesUnplayed.shift());
 	        this.currentPlayer.playerInfo.updateMeepleCount();
-	        $('.board').append(this.currentMeeple.dom);
+	        $('#board').append(this.currentMeeple.dom);
 	        this.showPlaceTileButton();
 	        this.nextTurn();
 	      } else {
@@ -548,22 +677,75 @@
 	      this.nextTurn();
 	    }
 	  }, {
+	    key: 'targetMeeple',
+	    value: function targetMeeple(e) {
+	      var thisMeepleColor = e.target.id.split('-')[2];
+	      var thisMeepleId = e.target.id.split('-')[0];
+
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
+
+	      try {
+	        for (var _iterator2 = this.players[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var player = _step2.value;
+
+	          if (player.color === thisMeepleColor) {
+	            var _iteratorNormalCompletion3 = true;
+	            var _didIteratorError3 = false;
+	            var _iteratorError3 = undefined;
+
+	            try {
+	              for (var _iterator3 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	                var meeple = _step3.value;
+
+	                if (String(meeple.id) === thisMeepleId) {
+	                  this.removeMeeple.call(meeple, player);
+	                }
+	              }
+	            } catch (err) {
+	              _didIteratorError3 = true;
+	              _iteratorError3 = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion3 && _iterator3['return']) {
+	                  _iterator3['return']();
+	                }
+	              } finally {
+	                if (_didIteratorError3) {
+	                  throw _iteratorError3;
+	                }
+	              }
+	            }
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion2 && _iterator2['return']) {
+	            _iterator2['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
+	          }
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'removeMeeple',
-	    value: function removeMeeple(e) {
-	      var meeplesUnplayed = this.currentPlayer.meepleInventory.meeplesUnplayed;
-	      var meeplesPlayed = this.currentPlayer.meepleInventory.meeplesPlayed;
-	      var thisMeepleId = e.currentTarget.id.charAt(0);
-	      var $targetedMeeple = $.grep(meeplesPlayed, function (e) {
-	        return e.id == thisMeepleId;
-	      })[0];
+	    value: function removeMeeple(player) {
 	      if (confirm('Remove Meeple?')) {
-	        $targetedMeeple.setPosition(0, 0);
-	        $targetedMeeple.dom.off('click');
-	        var index = meeplesPlayed.indexOf($targetedMeeple);
-	        meeplesUnplayed.push($targetedMeeple);
-	        meeplesPlayed.splice(index, 1);
-	        $targetedMeeple.hide();
-	      };
+	        this.setPosition(0, 0);
+	        this.dom.off('click');
+	        var index = player.meepleInventory.meeplesPlayed.indexOf(this);
+	        player.meepleInventory.meeplesUnplayed.push(this);
+	        player.meepleInventory.meeplesPlayed.splice(index, 1);
+	        player.playerInfo.updateMeepleCount();
+	        this.hide();
+	      }
 	    }
 	  }, {
 	    key: 'endGame',
@@ -581,129 +763,33 @@
 /* 9 */
 /***/ function(module, exports) {
 
+	// Define all existing DOM jquery objects
 	'use strict';
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var domItems = {
+	  headerLogo: $('#header-logo'),
+	  sectionPlayerInput: $('#section-player-input'),
+	  sectionGame: $('#section-game'),
+	  buttonCreateGame: $('#btn-create-game'),
+	  buttonBeginGame: $('#btn-begin-game'),
+	  buttonPlaceTile: $('#btn-place-tile'),
+	  buttonPlaceMeeple: $('#btn-place-meeple'),
+	  buttonSkipMeeple: $('#btn-skip-meeple'),
+	  inputPlayerName1: $('#input-player-name-1'),
+	  inputPlayerName2: $('#input-player-name-2'),
+	  inputPlayerName3: $('#input-player-name-3'),
+	  inputPlayerName4: $('#input-player-name-4'),
+	  inputPlayerName5: $('#input-player-name-5'),
+	  gameBoard: $('#board')
+	};
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function domInventory(key) {
+	  return domItems[key] || null;
+	}
 
-	var Tile = (function () {
-	  function Tile(image, type, top, right, bottom, left, pennant, x, y) {
-	    _classCallCheck(this, Tile);
-
-	    this.config = {
-	      tileWidth: 100,
-	      tileHeight: 100
-	    };
-
-	    this.image = image;
-	    this.type = type;
-	    this.top = top;
-	    this.right = right;
-	    this.bottom = bottom;
-	    this.left = left;
-	    this.pennant = pennant || false;
-	    this.x = x || 0;
-	    this.y = y || 0;
-	    this.dom = null;
-	    this.domRotate = null;
-
-	    this.buildDom();
-	  }
-
-	  _createClass(Tile, [{
-	    key: 'buildDom',
-	    value: function buildDom() {
-	      this.dom = $('<div>', { 'class': 'tile' });
-	      this.dom.css('background-image', 'url(' + this.image + ')');
-	      this.dom.css('left', this.x);
-	      this.dom.css('top', this.y);
-	      this.dom.css('display', 'none');
-	      $('body').append(this.dom);
-	    }
-	  }, {
-	    key: 'setPosition',
-	    value: function setPosition(x, y) {
-	      this.x = x;
-	      this.y = y;
-	      this.dom.css('left', this.x);
-	      this.dom.css('top', this.y);
-	    }
-	  }, {
-	    key: 'show',
-	    value: function show() {
-	      this.dom.css('display', 'block');
-	    }
-	  }, {
-	    key: 'activate',
-	    value: function activate() {
-	      this.domRotate = $('<div>', { 'class': 'rotate-tile' });
-	      this.dom.addClass('current-tile');
-	      this.dom.append(this.domRotate);
-	      this.dom.css('display', 'block');
-
-	      // Add listeners
-	      this.dom.draggable({
-	        grid: [this.config.tileWidth, this.config.tileHeight]
-	      });
-
-	      this.dom.on('click', { tile: this }, this.tileClick);
-	      this.dom.on('mouseover', { tile: this }, this.tileMouseOver);
-	      this.dom.on('mouseout', { tile: this }, this.tileMouseOut);
-	    }
-	  }, {
-	    key: 'deactivate',
-	    value: function deactivate() {
-	      // Cleanup listeners
-	      this.dom.off('click', this.tileClick);
-	      this.dom.off('mouseover', this.tileMouseOver);
-	      this.dom.off('mouseout', this.tileMouseOut);
-	      this.dom.draggable('disable');
-	      this.dom.removeClass('current-tile');
-	      this.domRotate.remove();
-	    }
-	  }, {
-	    key: 'tileClick',
-	    value: function tileClick(e) {
-	      var tileDom = e.data.tile.dom;
-	      if (tileDom.hasClass('rotate90')) {
-	        tileDom.removeClass('rotate90');
-	        tileDom.addClass('rotate180');
-	      } else if (tileDom.hasClass('rotate180')) {
-	        tileDom.removeClass('rotate180');
-	        tileDom.addClass('rotate270');
-	      } else if (tileDom.hasClass('rotate270')) {
-	        tileDom.removeClass('rotate270');
-	      } else {
-	        tileDom.addClass('rotate90');
-	      }
-	    }
-	  }, {
-	    key: 'tileMouseOver',
-	    value: function tileMouseOver(e, data) {
-	      var tile = e.data.tile;
-	      tile.domRotate.show();
-	    }
-	  }, {
-	    key: 'tileMouseOut',
-	    value: function tileMouseOut(e) {
-	      var tile = e.data.tile;
-	      tile.domRotate.hide();
-	    }
-	  }, {
-	    key: 'position',
-	    get: function get() {
-	      var position = this.dom.position();
-	      var x = this.dom.position().left;
-	      var y = this.dom.position().top;
-	      return { x: x, y: y };
-	    }
-	  }]);
-
-	  return Tile;
-	})();
-
-	module.exports = Tile;
+	module.exports = {
+	  dom: domInventory
+	};
 
 /***/ },
 /* 10 */
@@ -716,13 +802,14 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var _ = __webpack_require__(11);
-	var Tile = __webpack_require__(9);
+	var Tile = __webpack_require__(13);
+	var config = __webpack_require__(14).info;
 
 	var TileInventory = (function () {
 	  function TileInventory() {
 	    _classCallCheck(this, TileInventory);
 
-	    this.config = {
+	    this.tileConfig = {
 	      borderTypes: ['field', 'road', 'city'],
 	      tileTypes: {
 	        A: { quantity: 2, borders: ['field', 'field', 'road', 'field'], pennant: false },
@@ -755,7 +842,7 @@
 
 	    this.tilesUnplayed = [];
 	    this.tilesPlayed = [];
-	    this.build();
+	    this.adjacentPositions = [];
 	  }
 
 	  _createClass(TileInventory, [{
@@ -766,10 +853,10 @@
 	      var _iteratorError = undefined;
 
 	      try {
-	        for (var _iterator = Object.keys(this.config.tileTypes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        for (var _iterator = Object.keys(this.tileConfig.tileTypes)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	          var tileType = _step.value;
 
-	          var tileInfo = this.config.tileTypes[tileType];
+	          var tileInfo = this.tileConfig.tileTypes[tileType];
 	          for (var i = 0; i < tileInfo.quantity; i++) {
 	            this.addTile(tileType, tileInfo);
 	          }
@@ -790,12 +877,13 @@
 	      }
 
 	      this.tilesUnplayed = _.shuffle(this.tilesUnplayed);
-	      this.addTile(this.config.tileStart, this.config.tileTypes[this.config.tileStart]);
+	      this.addTile(this.tileConfig.tileStart, this.tileConfig.tileTypes[this.tileConfig.tileStart]);
 	    }
 	  }, {
 	    key: 'addTile',
 	    value: function addTile(type, info) {
 	      var tile = new Tile('lib/images/tiles/' + type + '.png', type, info.borders[0], info.borders[1], info.borders[2], info.borders[3], info.pennant);
+	      tile.buildDom();
 	      this.tilesUnplayed.push(tile);
 	    }
 	  }, {
@@ -838,9 +926,73 @@
 	      return true;
 	    }
 	  }, {
-	    key: 'validPositions',
-	    value: function validPositions() {
-	      var validPositions = [];
+	    key: 'addAdjacentCoordinates',
+	    value: function addAdjacentCoordinates(x, y) {
+	      var left = [x - config('tileWidth'), y];
+	      var right = [x + config('tileWidth'), y];
+	      var top = [x, y - config('tileHeight')];
+	      var bottom = [x, y + config('tileHeight')];
+	      var adjacentCoordinates = [top, right, bottom, left];
+
+	      // push coordinates into adjacentPositions array if the position is open
+	      var _iteratorNormalCompletion3 = true;
+	      var _didIteratorError3 = false;
+	      var _iteratorError3 = undefined;
+
+	      try {
+	        for (var _iterator3 = adjacentCoordinates[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	          var position = _step3.value;
+
+	          if (this.isPositionOpen(position[0], position[1])) {
+	            this.adjacentPositions.push(position);
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError3 = true;
+	        _iteratorError3 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion3 && _iterator3['return']) {
+	            _iterator3['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError3) {
+	            throw _iteratorError3;
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'isPositionAdjacent',
+	    value: function isPositionAdjacent(x, y) {
+	      var _iteratorNormalCompletion4 = true;
+	      var _didIteratorError4 = false;
+	      var _iteratorError4 = undefined;
+
+	      try {
+	        for (var _iterator4 = this.adjacentPositions[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	          var position = _step4.value;
+
+	          if (position[0] === x && position[1] === y) {
+	            return true;
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError4 = true;
+	        _iteratorError4 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion4 && _iterator4['return']) {
+	            _iterator4['return']();
+	          }
+	        } finally {
+	          if (_didIteratorError4) {
+	            throw _iteratorError4;
+	          }
+	        }
+	      }
+
+	      return false;
 	    }
 	  }]);
 
@@ -17116,20 +17268,6 @@
 
 /***/ },
 /* 13 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Grid = function Grid() {
-	  _classCallCheck(this, Grid);
-	};
-
-	module.exports = Grid;
-
-/***/ },
-/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17138,8 +17276,418 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var MeepleInventory = __webpack_require__(15);
-	var PlayerInfo = __webpack_require__(17);
+	var config = __webpack_require__(14).info;
+
+	var Tile = (function () {
+	  function Tile(image, type, top, right, bottom, left, pennant, x, y) {
+	    _classCallCheck(this, Tile);
+
+	    this.image = image;
+	    this.type = type;
+	    this.top = top;
+	    this.right = right;
+	    this.bottom = bottom;
+	    this.left = left;
+	    this.pennant = pennant || false;
+	    this.x = x || 0;
+	    this.y = y || 0;
+	    this.dom = null;
+	    this.domRotate = null;
+	    this.mousemoved = false;
+	  }
+
+	  _createClass(Tile, [{
+	    key: 'buildDom',
+	    value: function buildDom() {
+	      this.dom = $('<div>', { 'class': 'tile' });
+	      this.dom.css('background-image', 'url(' + this.image + ')');
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	      this.dom.css('display', 'none');
+	      $('body').append(this.dom);
+	    }
+	  }, {
+	    key: 'setPosition',
+	    value: function setPosition(x, y) {
+	      this.x = x;
+	      this.y = y;
+	      this.dom.css('left', this.x);
+	      this.dom.css('top', this.y);
+	    }
+	  }, {
+	    key: 'show',
+	    value: function show() {
+	      this.dom.css('display', 'block');
+	    }
+	  }, {
+	    key: 'activate',
+	    value: function activate() {
+	      this.domRotate = $('<div>', { 'class': 'rotate-tile' });
+	      this.dom.addClass('current-tile');
+	      this.dom.append(this.domRotate);
+	      this.dom.css('display', 'block');
+
+	      this.dom.draggable({
+	        snap: true
+	      });
+	      this.dom.css('position', 'absolute');
+
+	      // Add listeners
+	      this.dom.on('mousedown', this.tileMouseDown.bind(this));
+	      this.dom.on('mouseup', this.tileMouseUp.bind(this));
+	      this.dom.on('mousemove', this.tileMouseMove.bind(this));
+	      this.dom.on('mouseover', this.tileMouseOver.bind(this));
+	      this.dom.on('mouseout', this.tileMouseOut.bind(this));
+	    }
+	  }, {
+	    key: 'deactivate',
+	    value: function deactivate() {
+	      // Cleanup listeners
+	      this.dom.off();
+	      this.dom.draggable('disable');
+	      this.domRotate.remove();
+	    }
+	  }, {
+	    key: 'removeBorder',
+	    value: function removeBorder() {
+	      this.dom.removeClass('current-tile');
+	    }
+	  }, {
+	    key: 'tileMouseDown',
+	    value: function tileMouseDown(e) {
+	      this.mousemoved = false;
+	      // Only add to the board if the tile is on the body still
+	      if (this.dom.parent().is($('body'))) {
+	        this.setToBoard();
+	      }
+	    }
+	  }, {
+	    key: 'tileMouseUp',
+	    value: function tileMouseUp(e) {
+	      // Don't rotate if tile has been dragged
+	      if (!this.mousemoved) {
+	        if (this.dom.hasClass('rotate90')) {
+	          this.dom.removeClass('rotate90');
+	          this.dom.addClass('rotate180');
+	        } else if (this.dom.hasClass('rotate180')) {
+	          this.dom.removeClass('rotate180');
+	          this.dom.addClass('rotate270');
+	        } else if (this.dom.hasClass('rotate270')) {
+	          this.dom.removeClass('rotate270');
+	        } else {
+	          this.dom.addClass('rotate90');
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'tileMouseMove',
+	    value: function tileMouseMove(e) {
+	      this.mousemoved = true;
+	    }
+	  }, {
+	    key: 'tileMouseOver',
+	    value: function tileMouseOver(e) {
+	      this.domRotate.show();
+	    }
+	  }, {
+	    key: 'tileMouseOut',
+	    value: function tileMouseOut(e) {
+	      this.domRotate.hide();
+	    }
+	  }, {
+	    key: 'setToBoard',
+	    value: function setToBoard() {
+	      var view = $('#view'),
+	          scrollLeft = view.scrollLeft(),
+	          scrollTop = view.scrollTop();
+
+	      // Remove the tile from the body and place on the board
+	      this.dom.detach();
+	      $('#board').append(this.dom);
+
+	      // Position the tile on the board based on scroll position
+	      this.dom.css('left', scrollLeft + config('tileWidth'));
+	      this.dom.css('top', scrollTop + config('tileHeight'));
+	    }
+	  }, {
+	    key: 'position',
+	    get: function get() {
+	      var position = this.dom.position();
+	      var x = this.dom.position().left;
+	      var y = this.dom.position().top;
+	      return { x: x, y: y };
+	    }
+	  }]);
+
+	  return Tile;
+	})();
+
+	module.exports = Tile;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var configData = {
+	  tileWidth: 100,
+	  tileHeight: 100
+	};
+
+	function config(key) {
+	  return configData[key] || null;
+	}
+
+	module.exports = {
+	  info: config
+	};
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var config = __webpack_require__(14).info;
+
+	var Grid = (function () {
+	  function Grid() {
+	    _classCallCheck(this, Grid);
+
+	    this.width = $('#view').outerWidth();
+	    this.height = $('#board').outerHeight();
+	  }
+
+	  _createClass(Grid, [{
+	    key: 'increaseWidth',
+	    value: function increaseWidth() {
+	      var viewWidth = this.width + config('tileWidth');
+	      this.width = $('#board').outerWidth(viewWidth).outerWidth();
+	    }
+	  }, {
+	    key: 'increaseHeight',
+	    value: function increaseHeight() {
+	      var viewHeight = this.height + config('tileHeight');
+	      this.height = $('#board').outerHeight(viewHeight).outerHeight();
+	    }
+	  }, {
+	    key: 'checkTilePositionAgainstBoard',
+	    value: function checkTilePositionAgainstBoard(game) {
+	      this.checkLeft(game);
+	      this.checkRight(game);
+	      this.checkTop(game);
+	      this.checkBottom(game);
+	    }
+	  }, {
+	    key: 'checkRight',
+	    value: function checkRight(game) {
+	      if (this.width - game.currentTile.x <= config('tileWidth') * 2) {
+	        this.increaseWidth();
+	      }
+	    }
+	  }, {
+	    key: 'checkLeft',
+	    value: function checkLeft(game) {
+	      if (game.currentTile.x <= 300) {
+	        this.increaseWidth();
+
+	        // move each played tile to the right
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	          for (var _iterator = game.tileInventory.tilesPlayed[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var tile = _step.value;
+
+	            var x = tile.x + config('tileWidth');
+	            tile.setPosition(x, tile.y);
+	          }
+
+	          // loop through each player
+	        } catch (err) {
+	          _didIteratorError = true;
+	          _iteratorError = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion && _iterator['return']) {
+	              _iterator['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError) {
+	              throw _iteratorError;
+	            }
+	          }
+	        }
+
+	        var _iteratorNormalCompletion2 = true;
+	        var _didIteratorError2 = false;
+	        var _iteratorError2 = undefined;
+
+	        try {
+	          for (var _iterator2 = game.players[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var player = _step2.value;
+
+	            // loop through each played meeple and move right
+	            var _iteratorNormalCompletion3 = true;
+	            var _didIteratorError3 = false;
+	            var _iteratorError3 = undefined;
+
+	            try {
+	              for (var _iterator3 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	                var meeple = _step3.value;
+
+	                var x = meeple.x + config('tileWidth');
+	                meeple.setPosition(x, meeple.y);
+	              }
+	            } catch (err) {
+	              _didIteratorError3 = true;
+	              _iteratorError3 = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion3 && _iterator3['return']) {
+	                  _iterator3['return']();
+	                }
+	              } finally {
+	                if (_didIteratorError3) {
+	                  throw _iteratorError3;
+	                }
+	              }
+	            }
+	          }
+	        } catch (err) {
+	          _didIteratorError2 = true;
+	          _iteratorError2 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion2 && _iterator2['return']) {
+	              _iterator2['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError2) {
+	              throw _iteratorError2;
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'checkTop',
+	    value: function checkTop(game) {
+	      if (game.currentTile.y <= config('tileHeight') * 2) {
+	        this.increaseHeight();
+
+	        // move each played tile down
+	        var _iteratorNormalCompletion4 = true;
+	        var _didIteratorError4 = false;
+	        var _iteratorError4 = undefined;
+
+	        try {
+	          for (var _iterator4 = game.tileInventory.tilesPlayed[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	            var tile = _step4.value;
+
+	            var y = tile.y + config('tileHeight');
+	            tile.setPosition(tile.x, y);
+	          }
+
+	          // loop through each player
+	        } catch (err) {
+	          _didIteratorError4 = true;
+	          _iteratorError4 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion4 && _iterator4['return']) {
+	              _iterator4['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError4) {
+	              throw _iteratorError4;
+	            }
+	          }
+	        }
+
+	        var _iteratorNormalCompletion5 = true;
+	        var _didIteratorError5 = false;
+	        var _iteratorError5 = undefined;
+
+	        try {
+	          for (var _iterator5 = game.players[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+	            var player = _step5.value;
+
+	            // loop through each played meeple and move down
+	            var _iteratorNormalCompletion6 = true;
+	            var _didIteratorError6 = false;
+	            var _iteratorError6 = undefined;
+
+	            try {
+	              for (var _iterator6 = player.meepleInventory.meeplesPlayed[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+	                var meeple = _step6.value;
+
+	                var y = meeple.y + config('tileHeight');
+	                meeple.setPosition(meeple.x, y);
+	              }
+	            } catch (err) {
+	              _didIteratorError6 = true;
+	              _iteratorError6 = err;
+	            } finally {
+	              try {
+	                if (!_iteratorNormalCompletion6 && _iterator6['return']) {
+	                  _iterator6['return']();
+	                }
+	              } finally {
+	                if (_didIteratorError6) {
+	                  throw _iteratorError6;
+	                }
+	              }
+	            }
+	          }
+	        } catch (err) {
+	          _didIteratorError5 = true;
+	          _iteratorError5 = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion5 && _iterator5['return']) {
+	              _iterator5['return']();
+	            }
+	          } finally {
+	            if (_didIteratorError5) {
+	              throw _iteratorError5;
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'checkBottom',
+	    value: function checkBottom(game) {
+	      if (this.height - game.currentTile.y <= config('tileHeight') * 2) {
+	        this.increaseHeight();
+	      }
+	    }
+	  }]);
+
+	  return Grid;
+	})();
+
+	module.exports = Grid;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var MeepleInventory = __webpack_require__(17);
+	var PlayerInfo = __webpack_require__(19);
 
 	var Player = (function () {
 	  function Player(name, color) {
@@ -17153,18 +17701,22 @@
 	  }
 
 	  _createClass(Player, [{
+	    key: 'buildSetUp',
+	    value: function buildSetUp() {
+	      this.meepleInventory.build();
+	      this.playerInfo.buildDom();
+	    }
+	  }, {
 	    key: 'addToScore',
 	    value: function addToScore() {
-	      this.score++;
-	      this.playerInfo.updateScore();
+	      return this.score++;
 	    }
 	  }, {
 	    key: 'subtractFromScore',
 	    value: function subtractFromScore() {
 	      if (this.score > 0) {
-	        this.score--;
+	        return this.score--;
 	      }
-	      this.playerInfo.updateScore();
 	    }
 	  }]);
 
@@ -17174,7 +17726,7 @@
 	module.exports = Player;
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17183,7 +17735,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var Meeple = __webpack_require__(16);
+	var Meeple = __webpack_require__(18);
 
 	var MeepleInventory = (function () {
 	  function MeepleInventory(color) {
@@ -17192,7 +17744,6 @@
 	    this.color = color;
 	    this.meeplesUnplayed = [];
 	    this.meeplesPlayed = [];
-	    this.build();
 	  }
 
 	  _createClass(MeepleInventory, [{
@@ -17200,18 +17751,9 @@
 	    value: function build() {
 	      for (var i = 1; i <= 7; i++) {
 	        var meeple = new Meeple(this.color, i);
+	        meeple.buildDom();
 	        this.meeplesUnplayed.push(meeple);
 	      }
-
-	      // _.times(7, () => {
-	      //   let meeple = new Meeple(this.color);
-	      //   this.meeplesUnplayed.push(meeple);
-	      // });
-	      //
-	      // _.times(7, function() {
-	      //   let meeple = new Meeple(this.color);
-	      //   this.meeplesUnplayed.push(meeple);
-	      // }.bind(this));
 	    }
 	  }]);
 
@@ -17221,7 +17763,7 @@
 	module.exports = MeepleInventory;
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17239,8 +17781,6 @@
 	    this.x = x || 0;
 	    this.y = y || 0;
 	    this.dom = null;
-
-	    this.buildDom();
 	  }
 
 	  _createClass(Meeple, [{
@@ -17248,7 +17788,7 @@
 	    value: function buildDom() {
 	      this.dom = $('<div>', { 'class': 'meeple' });
 	      this.dom.css('background-image', 'url(\'lib/images/meeples/meeple-' + this.color + '.png\')');
-	      this.dom.attr('id', this.id + '-meeple');
+	      this.dom.attr('id', this.id + '-meeple-' + this.color);
 	      this.dom.css('left', this.x);
 	      this.dom.css('top', this.y);
 	      this.dom.css('display', 'none');
@@ -17298,7 +17838,7 @@
 	module.exports = Meeple;
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17312,13 +17852,8 @@
 	    _classCallCheck(this, PlayerInfo);
 
 	    this.player = player;
-	    this.name = player.name;
-	    this.score = player.score;
-	    this.remainingMeeples = this.player.meepleInventory.meeplesUnplayed.length;
+	    this.remainingMeeples = 7;
 	    this.dom = null;
-
-	    this.buildDom();
-	    this.addEventListeners();
 	  }
 
 	  _createClass(PlayerInfo, [{
@@ -17327,58 +17862,66 @@
 	      this.dom = $('<div>', { 'class': 'player-pane' });
 	      this.dom.css('left', 100);
 	      this.dom.css('top', 300);
-	      this.dom.css('background-color', this.player.color);
-	      this.dom.css('color', "white");
-
-	      /* build player name */
+	      this.dom.addClass(this.player.color + '-background');
+	      this.dom.css('color', 'white');
+	      this.dom.addClass('dim');
+	      this.buildPlayerName();
+	      this.buildScoreDom();
+	      this.buildScoreButtons();
+	      this.buildMeepleCount();
+	      $('#player-info').append(this.dom);
+	      this.addEventListeners();
+	    }
+	  }, {
+	    key: 'buildPlayerName',
+	    value: function buildPlayerName() {
 	      this.nameDom = $('<h1>', { 'class': 'player-name' });
 	      this.nameDom.append(this.player.name);
 	      this.dom.append(this.nameDom);
-
-	      /* build outer score div, score text, scoring buttons div */
+	    }
+	  }, {
+	    key: 'buildScoreDom',
+	    value: function buildScoreDom() {
 	      this.scoreDom = $('<div>', { 'class': 'player-score' });
 	      this.scoreValueDom = $('<h3>', { 'class': 'player-score-value' });
-	      this.scoreValueDom.append('Score: ' + this.score);
+	      this.scoreValueDom.append('Score: ' + this.player.score);
 	      this.scoreButtons = $('<div>', { 'class': 'score-buttons' });
 	      this.scoreDom.append(this.scoreValueDom);
-
-	      /* build '+' button */
+	    }
+	  }, {
+	    key: 'buildScoreButtons',
+	    value: function buildScoreButtons() {
 	      this.addToScoreDom = $('<div>', { 'class': 'add-to-score' });
 	      this.scoreButtons.append(this.addToScoreDom);
-
-	      /* build '-' button */
 	      this.subtractFromScoreDom = $('<div>', { 'class': 'subtract-from-score' });
 	      this.scoreButtons.append(this.subtractFromScoreDom);
-
-	      /* append '+' and '-' buttons to score buttons div */
 	      this.scoreDom.append(this.scoreButtons);
-
-	      /* append score buttons div to score div */
 	      this.dom.append(this.scoreDom);
-
-	      /* build meeple count */
+	    }
+	  }, {
+	    key: 'buildMeepleCount',
+	    value: function buildMeepleCount() {
 	      this.meepleCountDom = $('<h3>', { 'class': 'player-meeple-count' });
 	      this.meepleCountDom.append('Meeples: ' + this.remainingMeeples);
 	      this.dom.append(this.meepleCountDom);
-
-	      $('.player-info').append(this.dom);
 	    }
 	  }, {
 	    key: 'addEventListeners',
 	    value: function addEventListeners() {
-	      this.dom.find('.add-to-score').on('click', this.addToPlayerScore.bind(this.player));
-
-	      this.dom.find('.subtract-from-score').on('click', this.subtractFromPlayerScore.bind(this.player));
+	      this.dom.find('.add-to-score').on('click', this.addToPlayerScore.bind(this));
+	      this.dom.find('.subtract-from-score').on('click', this.subtractFromPlayerScore.bind(this));
 	    }
 	  }, {
 	    key: 'addToPlayerScore',
 	    value: function addToPlayerScore(e) {
-	      this.addToScore();
+	      this.player.addToScore();
+	      this.updateScore();
 	    }
 	  }, {
 	    key: 'subtractFromPlayerScore',
 	    value: function subtractFromPlayerScore(e) {
-	      this.subtractFromScore();
+	      this.player.subtractFromScore();
+	      this.updateScore();
 	    }
 	  }, {
 	    key: 'updateScore',
@@ -17388,7 +17931,7 @@
 	    }
 	  }, {
 	    key: 'updateMeepleCount',
-	    value: function updateMeepleCount(count) {
+	    value: function updateMeepleCount() {
 	      this.remainingMeeples = this.player.meepleInventory.meeplesUnplayed.length;
 	      this.meepleCountDom.html('Meeples: ' + this.remainingMeeples);
 	    }
@@ -17398,6 +17941,120 @@
 	})();
 
 	module.exports = PlayerInfo;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var dom = __webpack_require__(9).dom;
+
+	var Animations = (function () {
+	  function Animations() {
+	    _classCallCheck(this, Animations);
+
+	    this.animations = {
+	      sectionSwap: null,
+	      sectionPlayerInputHide: null,
+	      sectionGameShow: null
+	    };
+	  }
+
+	  _createClass(Animations, [{
+	    key: 'sectionSwap',
+	    value: function sectionSwap(id, callback) {
+	      var domSectionOld = undefined,
+	          domSection = $('#' + id);
+
+	      if (!this.animations.sectionSwap) {
+	        this.animations.sectionSwap = new TimelineMax({ paused: true });
+	      }
+	      this.animations.sectionSwap.clear().eventCallback('onComplete', callback, []);
+
+	      if (this.sectionId) {
+	        domSectionOld = $('#' + this.sectionId);
+	        this.animations.sectionSwap.to(domSectionOld, 0.3, { autoAlpha: 0 }).set(domSectionOld, { display: 'none' });
+	      }
+
+	      this.sectionId = id;
+
+	      this.animations.sectionSwap.set(domSection, { display: 'block' }).to(domSection, 0.3, { autoAlpha: 1 }).play();
+	    }
+	  }, {
+	    key: 'sectionPlayerInputHide',
+	    value: function sectionPlayerInputHide(callback) {
+	      if (!this.sectionId) {
+	        return;
+	      }
+	      if (!this.animations.sectionPlayerInputHide) {
+	        this.animations.sectionPlayerInputHide = new TimelineMax({ paused: true });
+	      }
+
+	      this.animations.sectionPlayerInputHide.clear().eventCallback('onComplete', callback, []).to(dom('sectionPlayerInput'), 0.3, { autoAlpha: 0 }).set(dom('sectionPlayerInput'), { display: 'none' }).to(dom('headerLogo'), 0.5, { top: -50, scale: 0.4 }).play();
+	    }
+	  }, {
+	    key: 'sectionGameShow',
+	    value: function sectionGameShow(currentTileDom) {
+	      if (!this.animations.sectionGameShow) {
+	        this.animations.sectionGameShow = new TimelineMax({ paused: true });
+	      }
+
+	      this.animations.sectionGameShow.clear().set(dom('sectionGame'), { display: 'block' }).to(dom('sectionGame'), 0.3, { autoAlpha: 1 }).to(dom('buttonPlaceTile'), 0.1, { autoAlpha: 1 }, "-=0.3").set(currentTileDom, { display: 'block', autoAlpha: 0 }, "-=0.4").to(currentTileDom, 0.1, { autoAlpha: 1 }, "-=0.4").play();
+	    }
+	  }]);
+
+	  return Animations;
+	})();
+
+	module.exports = Animations;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var Rules = (function () {
+	  function Rules() {
+	    _classCallCheck(this, Rules);
+
+	    this.$modal = $('#modal-rules');
+	    this.$btn = $('#btn-rules');
+	    this.$span = $('#close-rules');
+	  }
+
+	  _createClass(Rules, [{
+	    key: 'prepare',
+	    value: function prepare() {
+	      this.$btn.on('click', (function () {
+	        this.$modal.css('display', 'block');
+	      }).bind(this));
+
+	      this.$span.on('click', (function () {
+	        this.$modal.css('display', 'none');
+	      }).bind(this));
+
+	      $("window").on('click', (function (e) {
+	        if (event.target === modal) {
+	          this.$modal.css('display', 'none');
+	        }
+	      }).bind(this));
+	    }
+	  }]);
+
+	  return Rules;
+	})();
+
+	module.exports = Rules;
 
 /***/ }
 /******/ ]);

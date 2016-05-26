@@ -1,69 +1,190 @@
+@import "styles/fonts";
+@import "styles/variables";
+@import "styles/reset";
+
 body {
-  position: relative;
-  margin: 0;
-  padding: 0;
+  background-image: url('images/wood.jpg');
 }
 
-.view {
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+
+  img {
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+section {
+  display: none;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+
+  .logo {
+    display: block;
+    margin: auto;
+  }
+
+  .btn-primary {
+    display: block;
+    margin: 50px auto;
+    padding: 0 20px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 5px;
+    background-color: $blue;
+    color: white;
+    font-family: $medieval-font;
+    font-size: 32px;
+  }
+}
+
+section#section-pre-game {
+  padding-top: 180px;
+}
+
+section#section-player-input {
+  padding-top: 180px;
+  font-family: $secondary-font;
+  font-size: 24px;
+
+  label {
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    width: 420px;
+    color: white;
+  }
+
+  select, input {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    height: 45px;
+    width: 250px;
+    font-family: $secondary-font;
+    font-size: 24px;
+  }
+
+  select {
+    width: 100px;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+section#section-game {
+
+  #game-aside {
+
+    button {
+      position: absolute;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: white;
+      color: #1c477f;
+      font-family: $secondary-font;
+      font-size: 18px;
+      display: none;
+    }
+
+    #btn-rules {
+      display: block;
+      top: 0;
+      right: 50px;
+      margin: 20px;
+    }
+
+    #btn-place-tile {
+      top: 55px;
+      left: 50px;
+      width: 215px;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #btn-place-meeple {
+      top: 55px;
+      left: 35px;
+      width: 125px;
+    }
+
+    #btn-skip-meeple {
+      top: 55px;
+      left: 165px;
+      width: 115px;
+    }
+
+    #tiles-remaining {
+      position: absolute;
+      color: white;
+      font-family: $medieval-font;
+      font-size: 30px;
+      top: 20px;
+      left: 50px;
+      height: 30px;
+      width: 220px;
+    }
+  }
+}
+
+.meeple {
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  z-index: 2;
+}
+
+#view {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: auto;
 }
 
-.board {
+#board {
   position: absolute;
-  width: 3000px;
-  height: 3000px;
+  width: 100%;
+  height: 100%;
   background-image: url('images/wood.jpg');
   background-color: brown;
-}
-
-/* Buttons */
-
-#btn-place-tile {
-  position: absolute;
-  background-color: white;
-  top: 70px;
-  left: 85px;
-  z-index: 10;
-}
-
-#btn-place-meeple {
-  position: absolute;
-  background-color: white;
-  top: 70px;
-  left: 75px;
-  z-index: 10;
-  display: none;
-}
-
-#btn-skip-meeple {
-  position: absolute;
-  background-color: white;
-  top: 70px;
-  left: 170px;
-  z-index: 10;
-  display: none;
-}
-
-#tiles-remaining {
-  position: absolute;
-  color: white;
-  font-size: 30px;
-  top: 20px;
-  left: 50px;
-  height: 30px;
-  z-index: 10;
 }
 
 /* tiles */
 
 .current-tile {
-  top: 0;
-  right: 0;
-  border: 3px solid white;
+  border: 3px solid;
   z-index: 1;
+}
+
+.red-border {
+  border-color: $red;
+}
+
+.blue-border {
+  border-color: $blue;
+}
+
+.yellow-border {
+  border-color: $yellow;
+}
+
+.black-border {
+  border-color: $black;
+}
+
+.green-border {
+  border-color: $green;
 }
 
 .tile {
@@ -71,14 +192,6 @@ body {
   width: 100px;
   height: 100px;
   background-color: white;
-  background-size: cover;
-}
-
-/* meeples */
-.meeple {
-  position: absolute;
-  width: 25px;
-  height: 25px;
   background-size: cover;
 }
 
@@ -122,62 +235,253 @@ body {
 
 /* player-info */
 
-.player-info {
+#player-info {
   position: absolute;
   z-index: 10;
   top: 250px;
-  left: 50px;
+  left: 65px;
+  font-family: $secondary-font;
+
+  .red-background {
+    background-color: $red;
+  }
+
+  .blue-background {
+    background-color: $blue;
+  }
+
+  .green-background {
+    background-color: $green;
+  }
+
+  .yellow-background {
+    background-color: $yellow;
+  }
+
+  .black-background {
+    background-color: $black;
+  }
+
+  .player-pane {
+    display: block;
+    border-style: solid;
+    border-width: 4px;
+    z-index: 10;
+    width: 175px;
+    height: 175px;
+    padding-top: 25px;
+    padding-left: 25px;
+
+    .player-name {
+      margin-bottom: 5px
+    }
+
+    .player-score {
+      display: inline-block;
+      margin: 0;
+
+      .player-score-value {
+        display: inline-block;
+        padding-top: 20px;
+        vertical-align: top;
+        width: 85px;
+      }
+
+      .score-buttons {
+        display: inline-block;
+        margin: 10px;
+
+        .add-to-score {
+          display: block;
+          height: 20px;
+          width: 20px;
+          background-image: url('images/buttons.png');
+          background-position: 0 64px;
+          background-size: 42px 42px;
+        }
+
+        .subtract-from-score {
+          display: block;
+          height: 20px;
+          width: 20px;
+          background-image: url('images/buttons.png');
+          background-position: 0 0;
+          background-size: 42px 42px;
+        }
+      }
+    }
+
+    .player-meeple-count {
+      margin: 0;
+    }
+  }
 }
 
-.player-pane {
-  display: block;
-  border-style: solid;
-  border-width: 4px;
-  z-index: 10;
-  width: 175px;
-  height: 175px;
-  padding-left: 20px;
+.dim {
+  opacity: 0.5;
 }
 
-.player-name {
-  margin-bottom: 5px
+.box {
+	background-color: #91e600;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	position: absolute;
+	top:0;
+	border-radius: 10px;
 }
 
-.player-score {
-  display: inline-block;
-  margin: 0;
+/* background-music */
+
+audio {
+  display: none;
 }
 
-.player-score-value {
-  display: inline-block;
-  padding-bottom: 10px;
-  margin-bottom: 5px;
-  vertical-align: top;
-}
+/* rules */
 
-.score-buttons {
-  display: inline-block;
-  margin: 10px;
-}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  overflow: auto;
+  background-color: $blue;
 
-.add-to-score {
-  display: block;
-  height: 20px;
-  width: 20px;
-  background-image: url('images/buttons.png');
-  background-position: 0 64px;
-  background-size: 42px 42px;
-}
+  #modal-rules-content {
+    background-color: #F8ECC2;
+    margin: 5% auto;
+    width: 80%;
+    padding: 60px;
+    border: 2px solid #888;
+  }
 
-.subtract-from-score {
-  display: block;
-  height: 20px;
-  width: 20px;
-  background-image: url('images/buttons.png');
-  background-position: 0 0;
-  background-size: 42px 42px;
-}
+  #close-rules {
+    padding-right: 10px;
+    color: #aaa;
+    float: right;
+    font-family: $main-font;
+    font-size: 28px;
+    font-weight: bold;
+  }
 
-.player-meeple-count {
-  margin: 0;
+  #close-rules:hover,
+  #close-rules:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .logo {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .main-content {
+    font-family: $rules-font;
+    padding-top: 5%;
+
+    h2, h3 {
+      font-family: $medieval-font;
+      padding-top: 20px;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+    .two-thirds-left {
+      display: inline-block;
+      margin: 0;
+      width: 50%;
+    }
+
+    .one-third-right {
+      display: inline-block;
+      float: right;
+      width: 35%;
+
+      img {
+        display: inline-block;
+        position: relative;
+        top: -20px;
+        z-index: 21;
+      }
+
+      #valid-city-placement {
+        width: 70%;
+        left: 5%;
+      }
+
+      #invalid-tile-placement {
+        width: 50%;
+      }
+
+      #connecting-road {
+        width: 80%;
+      }
+    }
+
+    #rules-followers {
+      display: block;
+    }
+
+    #rules-followers img {
+      display: block;
+      position: relative;
+      top: 10px;
+      width: 100%;
+    }
+
+    #road-scoring-1 {
+      display: inline-block;
+      position: relative;
+      top: -100px;
+      width: 150px;
+      left: 10%;
+    }
+
+    #road-scoring-2 {
+      display: inline-block;
+      position: relative;
+      top: 10px;
+      left: 30%;
+      width: 90px;
+    }
+
+    #tie-city {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #cloister-scoring {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-1 {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 10px;
+      width: 55%;
+    }
+
+    #farm-scoring-2 {
+      display: block;
+      margin: auto;
+      left: 25%;
+      top: 18px;
+      width: 55%;
+    }
+  }
 }

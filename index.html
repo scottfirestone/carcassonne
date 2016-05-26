@@ -3,20 +3,142 @@
 <head>
   <meta charset="utf-8">
   <title>Carcassonne</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="vendors/jquery.min.js"></script>
+  <script src="vendors/jquery-ui.min.js"></script>
+  <script src="vendors/TweenMax.min.js"></script>
 </head>
 <body>
-  <div class="view">
-    <div class="board">
+  <section id="section-pre-game">
+    <button id="btn-create-game" type="button" class="btn-primary">Create a New Game</button>
+  </section>
+  <section id="section-player-input">
+    <label for="player-number">Select the number of players</label>
+    <select name="player-number" id="player-number">
+      <option value="" hidden>Select</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input id="input-player-name-1" type="text" placeholder="Enter Player 1 Name" />
+    <input id="input-player-name-2" type="text" placeholder="Enter Player 2 Name" />
+    <input id="input-player-name-3" type="text" placeholder="Enter Player 3 Name" />
+    <input id="input-player-name-4" type="text" placeholder="Enter Player 4 Name" />
+    <input id="input-player-name-5" type="text" placeholder="Enter Player 5 Name" />
+    <button id="btn-begin-game" type="button" class="btn-primary">Begin Game</button>
+  </section>
+  <section id="section-game">
+    <div id="view">
+      <div id="board"></div>
     </div>
+    <aside id="game-aside">
+      <div id="player-info"></div>
+      <button id="btn-place-tile" type="button">Confirm Tile Placement</button>
+      <button id="btn-place-meeple" type="button">Place Meeple</button>
+      <button id="btn-skip-meeple" type="button">Skip Meeple</button>
+      <div id="tiles-remaining"></div>
+
+      <button id="btn-rules">Rules</button>
+      <div id="modal-rules" class="modal">
+        <span id="close-rules">x</span>
+        <div id="modal-rules-content">
+          <img src="lib/images/carcassonne-logo.png" class="logo" alt="carcassonne-logo" />
+          <div class="main-content">
+            <h2>Overview</h2>
+            <p>
+              The players place land tiles turn by turn. As they do so, the roads, cities, fields, and cloisters emerge and grow. On these, the players can deploy their followers to earn points. Players score points during the game and at the end. The player with the most points wins!
+            </p>
+            <h2>Playing the Game</h2>
+            <p>The sequence of events for a turn are as follows:</p>
+            <ul>
+              <li>The player legally places the randomly drawn tile on the board.</li>
+              <li>The player may choose to place a follower from his/her supply to the land tile just placed.</li>
+              <li>The turn is now over. If the cloister, road, or city are completed as a result of the player's tile placement, he/she can increment the score accordingly, as well as retrieve any followers on the completed area(s).</li>
+            </ul>
+            <div class="tile-placement">
+              <h3>Tile Placement</h3>
+              <div class="two-thirds-left">
+                <p>
+                  Tiles must be placed adjacent and abutting one previously placed tile. Corner-to-corner placement is not sufficient.
+                </p>
+                <p>
+                  The new tile must be placed so that all field, city, and road segments on the new tile continue to field, city, and road segments, respectively, on all abutting tiles (cloisters are always complete within single tiles).
+                </p>
+              </div>
+              <div class="one-third-right">
+                <img id="valid-city-placement" src="lib/images/rules/valid-city-placement.png" alt="city-field-placement" />
+                <img id="connecting-road" src="lib/images/rules/connecting-road.png" alt="connecting-road" />
+                <img id="invalid-tile-placement" src="lib/images/rules/invalid-tile-placement.png" alt="invalid-tile-placement" />
+              </div>
+            </div>
+            <div id="rules-followers">
+              <h3>Deploying Followers</h3>
+              <p>After the player places a land tile, a follower can be deployed, according to the following rules:</p>
+              <ul>
+                <li>Only 1 follower can be placed per turn.</li>
+                <li>The follower must be deployed to the tile the player just played.</li>
+                <li>The follower can only be deployed to any of the following tile segments: road, city, cloister, or field.</li>
+                <li>A follower can not be placed if, through adjacent tile(s), it connects to a like segment where a follower is already placed, no matter how far, even if it belongs to the same player.</li>
+                <li>If a player has used all of his/her supply of followers (7), he/she will continue to take turns placing tiles. In order to place additional followers, they must be returned to his/her supply by completing roads, cities, or cloisters where that player's followers are placed.</li>
+              </ul>
+              <img src="lib/images/rules/follower-placement.png" alt="follower-placement" />
+              <p>
+                After and only after a land type is completed, those followers are returned to their player's supply for use on later turns.
+              </p>
+              <p>
+                It is possible to place a tile, a follower, complete a land type, and have returned the follower all on the same turn.
+              </p>
+            </div>
+            <h2>Scoring</h2>
+            <h3>Roads</h3>
+            <p>
+              A road is complete when the road segments on both ends connect to a crossing, city segment, or a cloister, or when the road forms a complete loop. One point per tile is scored for a completed road.
+            </p>
+            <div class="road-scoring">
+              <img id="road-scoring-1" src="lib/images/rules/road-scoring1.png" alt="road-scoring-1" />
+              <img id="road-scoring-2" src="lib/images/rules/road-scoring2.png" alt="road-scoring-2" />
+            </div>
+            <h3>Cities</h3>
+            <p>
+              A city is complete when surrounded by a city wall with no gaps in the wall nor holes in the city. Two points are scored per tile encapsulated by the city walls. Each pennant contained in the city earns an additional 2 points.
+            </p>
+            <p>
+              It is possible through clever tile placement for more than one follower to be present on a completed road or city. Only the player with the most followers gets points for the completed city or road. If both players have an equal number of followers on the same city or road, they both earn the full points for the completed item.
+            </p>
+            <img id="tie-city" src="lib/images/rules/tie-city.png" alt="tie-city" />
+            <h3>Cloisters</h3>
+            <p>
+              A cloister is complete when surrounded on all eight sides by played land tiles. Nine points are scored - 1 for the cloister tile and 1 for each surrounding tile.
+            </p>
+            <img id="cloister-scoring" src="lib/images/rules/cloister-scoring.png" alt="cloister-scoring" />
+            <h3>Farms</h3>
+            <p>
+              Connected field segments are called farms. Farms are not scored until the end of the game. Followers placed on farms remain until the end of the game, never returning to their player's supply.
+            </p>
+            <h2>End of game</h2>
+            <p>
+              The game ends when no more tiles are left to be drawn. For incomplete roads or cities, players with followers placed on those segments earn 1 point for each tile connected to that follower's segment. Pennants are worth 1 point each. If more than one follower exists on a connected segment, use the same rules for completed roads and cities. For cloisters, 1 point is scored for each surrounding tile plus 1 for the cloister.
+            </p>
+            <h3>Farm scoring</h3>
+            <p>
+              Only completed cities count for farm scoring. The follower must be in a farm that borders a city. Distance does not matter. For each completed city, the player with the most connected field-followers scores 3 points. In case of a tie of followers, each player scores 3 points per city. It is possible to score multiple times for the same city, if the followers' field segments do not connect. Tip: Fields are not connected when only touching at the corner.
+            </p>
+            <img id="farm-scoring-1" src="lib/images/rules/farm-scoring-1.png" alt="farm-scoring-1" />
+            <img id="farm-scoring-2" src="lib/images/rules/farm-scoring-2.png" alt="farm-scoring-2" />
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </section>
+  <header id="header-logo">
+    <img src="lib/images/carcassonne-logo.png" class="logo" alt="carcassonne-logo" />
+  </header>
+  <div id="backgroundaudio">
+    <audio id="background-audio" src="lib/music/medieval-music.mp3" controls loop autoplay preload>
+      <p>If you are reading this, it is because your browser does not support the audio element.</p>
+    </audio>
   </div>
-  <div class="player-info">
-  </div>
-  <button id="btn-place-tile" type="button">Confirm Tile Placement</button>
-  <button id="btn-place-meeple" type="button">Place Meeple</button>
-  <button id="btn-skip-meeple" type="button">Skip Meeple</button>
-  <div id="tiles-remaining"></div>
   <script src="main.bundle.js"></script>
 </body>
 </html>
