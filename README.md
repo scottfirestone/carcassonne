@@ -1,4 +1,6 @@
-# Game Time Starter Kit
+# Carcassonne
+
+A tile-based board game for 2-5 players. Players take turn placing tiles and followers onto the board. There are some validations in place for tile and follower placement, but for the most part players must know the rules of the game to play properly and keep track of their own score. 
 
 To install the dependencies:
 
